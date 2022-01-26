@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(501, 288));
@@ -141,6 +142,14 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         jPanel2.add(jLabel1, gridBagConstraints);
 
+        jLabel4.setText("No tienes un usuario? Registrate aqui.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
+        jPanel2.add(jLabel4, gridBagConstraints);
+
         bg.add(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,7 +182,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
     /**
-
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -215,6 +224,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
