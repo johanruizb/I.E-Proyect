@@ -5,7 +5,10 @@
 package login;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.lang.Runnable;
+import registro.Registro;
 
 /**
  *
@@ -143,6 +146,17 @@ public class Login extends javax.swing.JFrame {
         panel.add(recordar, gridBagConstraints);
 
         registro.setText("No tienes un usuario? Registrate aqui.");
+        registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registroMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registroMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registroMouseEntered(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -215,7 +229,6 @@ public class Login extends javax.swing.JFrame {
         if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
             contraseña.setText("");
             contraseña.setForeground(Color.BLACK);
-            System.out.println(correo.getText());
         }
         if ("".equals(correo.getText())) {
             correo.setText("Correo o usuario");
@@ -223,6 +236,33 @@ public class Login extends javax.swing.JFrame {
             correo.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_contraseñaMouseClicked
+
+    private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
+        // TODO add your handling code here:
+
+        {
+            /*Ocultar o destruir ventana actual*/
+            this.dispose();
+
+            /* Crear y mostrar el registro */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new Registro().setVisible(true);
+                }
+            });
+        }
+    }//GEN-LAST:event_registroMouseClicked
+
+    private void registroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseEntered
+        // TODO add your handling code here:
+        registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_registroMouseEntered
+
+    private void registroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseExited
+        // TODO add your handling code here:
+        registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_registroMouseExited
     /**
      *
      * @param args the command line arguments
@@ -253,6 +293,7 @@ public class Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Login().setVisible(true);
             }
