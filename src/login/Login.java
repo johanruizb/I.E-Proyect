@@ -4,6 +4,7 @@
  */
 package login;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 /**
@@ -30,17 +31,16 @@ public class Login extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         bg = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        entradas = new javax.swing.JPanel();
+        correo = new javax.swing.JTextField();
+        iconEmail = new javax.swing.JLabel();
+        iconPass = new javax.swing.JLabel();
+        contraseña = new javax.swing.JPasswordField();
+        ingresar = new javax.swing.JButton();
+        recordar = new javax.swing.JCheckBox();
+        registro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(501, 288));
@@ -50,71 +50,71 @@ public class Login extends javax.swing.JFrame {
         bg.setLayout(new javax.swing.BoxLayout(bg, javax.swing.BoxLayout.LINE_AXIS));
         bg.setSize(new Dimension(501,288));
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(235, 375));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        panel.setPreferredSize(new java.awt.Dimension(235, 375));
+        panel.setLayout(new java.awt.GridBagLayout());
 
-        jCheckBox1.setText("Recordar usuario");
-        jCheckBox1.setContentAreaFilled(false);
-        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jCheckBox1.setNextFocusableComponent(jButton1);
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        jPanel2.add(jCheckBox1, gridBagConstraints);
+        gridBagConstraints.gridheight = 2;
+        panel.add(logo, gridBagConstraints);
 
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        entradas.setOpaque(false);
+        entradas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/password.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
-
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("Contraseña");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+        correo.setForeground(new java.awt.Color(204, 204, 204));
+        correo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correoMouseClicked(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 180, 36));
-
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Correo o usuario");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                correoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
+        entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/correo.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        iconEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/correo.png"))); // NOI18N
+        entradas.add(iconEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        iconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/password.png"))); // NOI18N
+        entradas.add(iconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+
+        contraseña.setForeground(new java.awt.Color(204, 204, 204));
+        contraseña.setText("Contraseña");
+        contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contraseñaMouseClicked(evt);
+            }
+        });
+        contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraseñaActionPerformed(evt);
+            }
+        });
+        entradas.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 180, 36));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        jPanel2.add(jPanel1, gridBagConstraints);
+        panel.add(entradas, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(33, 150, 243));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setMaximumSize(new java.awt.Dimension(100, 35));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 35));
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 35));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ingresar.setBackground(new java.awt.Color(33, 150, 243));
+        ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        ingresar.setText("Ingresar");
+        ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ingresar.setMaximumSize(new java.awt.Dimension(100, 35));
+        ingresar.setMinimumSize(new java.awt.Dimension(100, 35));
+        ingresar.setPreferredSize(new java.awt.Dimension(100, 35));
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ingresarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -122,35 +122,35 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        jPanel2.add(jButton1, gridBagConstraints);
+        panel.add(ingresar, gridBagConstraints);
 
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recordar.setText("Recordar usuario");
+        recordar.setContentAreaFilled(false);
+        recordar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        recordar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recordar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        recordar.setNextFocusableComponent(ingresar);
+        recordar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 54, 0, 0);
-        jPanel2.add(logo, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        panel.add(recordar, gridBagConstraints);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
-        jPanel2.add(jLabel1, gridBagConstraints);
-
-        jLabel4.setText("No tienes un usuario? Registrate aqui.");
+        registro.setText("No tienes un usuario? Registrate aqui.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
-        jPanel2.add(jLabel4, gridBagConstraints);
+        panel.add(registro, gridBagConstraints);
 
-        bg.add(jPanel2);
+        bg.add(panel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,21 +166,63 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void defaultText() {
+        if ("".equals(correo.getText())) {
+            correo.setText("Correo o usuario");
+            contraseña.setForeground(new Color(204, 204, 204));
+        }
+        if ("".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setText("Contraseña");
+            contraseña.setForeground(new Color(204, 204, 204));
+            correo.setForeground(new Color(204, 204, 204));
+        }
+    }
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        defaultText();
+    }//GEN-LAST:event_ingresarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void recordarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        defaultText();
+    }//GEN-LAST:event_recordarActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_correoActionPerformed
+
+    private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contraseñaActionPerformed
+
+    private void correoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoMouseClicked
+        // TODO add your handling code here:
+        if ("Correo o usuario".equals(correo.getText())) {
+            correo.setText("");
+            correo.setForeground(Color.BLACK);
+        }
+
+        if ("".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setText("Contraseña");
+            contraseña.setForeground(new Color(204, 204, 204));
+            correo.setForeground(new Color(204, 204, 204));
+        }
+    }//GEN-LAST:event_correoMouseClicked
+
+    private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
+        // TODO add your handling code here:
+        if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setText("");
+            contraseña.setForeground(Color.BLACK);
+            System.out.println(correo.getText());
+        }
+        if ("".equals(correo.getText())) {
+            correo.setText("Correo o usuario");
+            contraseña.setForeground(new Color(204, 204, 204));
+            correo.setForeground(new Color(204, 204, 204));
+        }
+    }//GEN-LAST:event_contraseñaMouseClicked
     /**
      *
      * @param args the command line arguments
@@ -219,16 +261,16 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField contraseña;
+    private javax.swing.JTextField correo;
+    private javax.swing.JPanel entradas;
+    private javax.swing.JLabel iconEmail;
+    private javax.swing.JLabel iconPass;
+    private javax.swing.JButton ingresar;
     private javax.swing.JLabel logo;
+    private javax.swing.JPanel panel;
+    private javax.swing.JCheckBox recordar;
+    private javax.swing.JLabel registro;
     // End of variables declaration//GEN-END:variables
+
 }
