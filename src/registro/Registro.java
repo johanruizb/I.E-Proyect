@@ -585,8 +585,8 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList<String> emailRegistrado = new ArrayList<String>();
     private ArrayList<String> contraseñaUsuario = new ArrayList<String>();
     private ArrayList areaOperativa = new ArrayList();
-    private String nombreUsuario, apellidosUsuario, numeroCedula;
-    private String ciudadUsuario, emailUsuario, contraseñaUsuarioS;
+    private String nombreUsuario="", apellidosUsuario="", numeroCedula="";
+    private String ciudadUsuario="", emailUsuario="";
     private String empresaUsuario, localidad, password;
     private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
     private Border bordeAzul = BorderFactory.createLineBorder(Color.BLUE);
