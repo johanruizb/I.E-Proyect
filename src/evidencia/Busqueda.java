@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evidence.manager;
-
-import java.awt.Color;
+package evidencia;
 
 /**
  *
@@ -35,7 +33,7 @@ public class Busqueda extends javax.swing.JFrame {
         lupa = new javax.swing.JLabel();
         menu = new javax.swing.JLabel();
         registros = new javax.swing.JLabel();
-        notificaciones = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         configuracion = new javax.swing.JLabel();
         aprobadas = new javax.swing.JLabel();
         enAprobacion = new javax.swing.JLabel();
@@ -68,7 +66,6 @@ public class Busqueda extends javax.swing.JFrame {
         lupa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         panelPrincipal.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 60, 40));
 
-        menu.setBackground(new java.awt.Color(255, 255, 255));
         menu.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         menu.setForeground(new java.awt.Color(51, 102, 255));
         menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu (2).png"))); // NOI18N
@@ -77,32 +74,21 @@ public class Busqueda extends javax.swing.JFrame {
         menu.setDoubleBuffered(true);
         panelPrincipal.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 120, 70));
 
-        registros.setBackground(new java.awt.Color(255, 255, 255));
         registros.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         registros.setForeground(new java.awt.Color(51, 102, 255));
         registros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/archivo (1).png"))); // NOI18N
         registros.setText("  Registros");
         registros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         registros.setPreferredSize(new java.awt.Dimension(608, 360));
-        registros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrosMouseClicked(evt);
-            }
-        });
         panelPrincipal.add(registros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 120, 70));
 
-        notificaciones.setBackground(new java.awt.Color(255, 255, 255));
-        notificaciones.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        notificaciones.setForeground(new java.awt.Color(51, 102, 255));
-        notificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/darse-cuenta (1).png"))); // NOI18N
-        notificaciones.setText("  Notificatión");
-        notificaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        notificaciones.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                notificacionesMouseClicked(evt);
-            }
-        });
-        panelPrincipal.add(notificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 120, 70));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/darse-cuenta (1).png"))); // NOI18N
+        jLabel3.setText("  Notificatión");
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        panelPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 120, 70));
 
         configuracion.setBackground(new java.awt.Color(255, 255, 255));
         configuracion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -120,7 +106,7 @@ public class Busqueda extends javax.swing.JFrame {
         aprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         panelPrincipal.add(aprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 110, 30));
 
-        enAprobacion.setBackground(new java.awt.Color(51, 0, 204));
+        enAprobacion.setBackground(new java.awt.Color(255, 255, 255));
         enAprobacion.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         enAprobacion.setForeground(new java.awt.Color(0, 0, 0));
         enAprobacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,32 +124,17 @@ public class Busqueda extends javax.swing.JFrame {
         mostrarRegistro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         mostrarRegistro.setForeground(new java.awt.Color(0, 0, 0));
         mostrarRegistro.setText("ID: 201943");
+        mostrarRegistro.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         panelPrincipal.add(mostrarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 280, 40));
 
-        jLabel1.setText("parte dos");
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 170, 40));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void registrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrosMouseClicked
-        // TODO add your handling code here:
-        System.out.println("Escucho");
-        if(evt.getSource().equals(registros)){
-            registros.setBackground(new Color(51,102,255));
-        }
-    }//GEN-LAST:event_registrosMouseClicked
-
-    private void notificacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notificacionesMouseClicked
-        // TODO add your handling code here:
-          System.out.println("Escucho");
-        if(evt.getSource().equals(notificaciones)){
-            notificaciones.setBackground(new Color(51,102,255));
-        }
-       
-    }//GEN-LAST:event_notificacionesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,10 +178,10 @@ public class Busqueda extends javax.swing.JFrame {
     private javax.swing.JLabel enAprobacion;
     private javax.swing.JLabel idRegistros;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lupa;
     private javax.swing.JLabel menu;
     private javax.swing.JLabel mostrarRegistro;
-    private javax.swing.JLabel notificaciones;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel rechazadas;
     private javax.swing.JLabel registros;
