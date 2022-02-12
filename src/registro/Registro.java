@@ -329,7 +329,7 @@ public class Registro extends javax.swing.JFrame {
     private void nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusLost
 
         if (nombre.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Nombre no valido");
+          
             nombre.setBorder(bordeRojo);
             nombre.setText("Nombres: ");
 
@@ -355,7 +355,7 @@ public class Registro extends javax.swing.JFrame {
     private void apellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidosFocusLost
 
         if (apellidos.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Apellido no valido");
+          
             apellidos.setBorder(bordeRojo);
             apellidos.setText("Apellidos: ");
         } else if (apellidos.getText() != "") {
@@ -376,7 +376,7 @@ public class Registro extends javax.swing.JFrame {
     private void cedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusLost
 
         if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Identificación no valida");
+         
             cedula.setBorder(bordeRojo);
             cedula.setText("Cedula:");
 
@@ -402,7 +402,7 @@ public class Registro extends javax.swing.JFrame {
     private void ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusLost
 
         if (ciudad.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Campo no valido");
+          
             ciudad.setBorder(bordeRojo);
             ciudad.setText("Ciudad:");
         } else if (ciudad.getText() != "") {
@@ -431,11 +431,9 @@ public class Registro extends javax.swing.JFrame {
         if (matcher.matches() == true) {
             //JOptionPane.showMessageDialog(this, "Email correcto");
             email.setBorder(bordeAzul);
-            // System.out.println(email +" : "+ matcher.matches()+"\n");
-
+           
         } else {
             if (matcher.matches() == false) {
-                JOptionPane.showMessageDialog(this, "Email incorrecto");
                 email.setBorder(bordeRojo);
             }
         }
@@ -443,14 +441,15 @@ public class Registro extends javax.swing.JFrame {
     private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
 
         if (email.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Email invalido");
+           
             email.setText("email: ");
-
+            email.setBorder(bordeRojo);
         } else if (email.getText() != "email") {
             emailUsuario = email.getText();
             validandoEmail(emailUsuario);
 
             email.setText(emailUsuario);
+             email.setBorder(bordeAzul);
         }
     }//GEN-LAST:event_emailFocusLost
 
@@ -462,11 +461,15 @@ public class Registro extends javax.swing.JFrame {
 
     private void comprobarEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comprobarEmailFocusLost
 
-        if (emailUsuario.equals(comprobarEmail.getText())) {
+        if (emailUsuario.equals(comprobarEmail.getText())&& 
+                                 !comprobarEmail.getText().equals("")) {
             comprobarEmail.setBorder(bordeAzul);
         } else {
-            JOptionPane.showMessageDialog(this, "El Email es incorrecto");
+            if(comprobarEmail.getText().equals("")){
+                comprobarEmail.setText("email: ");
+            
             comprobarEmail.setBorder(bordeRojo);
+            }
 
         }
     }//GEN-LAST:event_comprobarEmailFocusLost
@@ -485,7 +488,7 @@ public class Registro extends javax.swing.JFrame {
     private void nombreEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreEmpresaFocusLost
 
         if (nombreEmpresa.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Campo no valido");
+            //JOptionPane.showMessageDialog(this, "Campo no valido");
             nombreEmpresa.setBorder(bordeRojo);
             nombreEmpresa.setText("Empresa: ");
         } else if (nombreEmpresa.getText() != "") {
@@ -505,7 +508,7 @@ public class Registro extends javax.swing.JFrame {
     private void departamentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departamentoFocusLost
 
         if (departamento.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Campo no valido");
+            //JOptionPane.showMessageDialog(this, "Campo no valido");
             departamento.setText("Area operativa ");
             departamento.setBorder(bordeRojo);
         } else if (departamento.getText() != "") {
@@ -529,16 +532,15 @@ public class Registro extends javax.swing.JFrame {
             contraseña.setBorder(bordeRojo);
         } else if (password != "") {
             password = new String(contraseña.getPassword());
-            // System.out.println("Soy passwor " + password);
-            //String passwd = password;
+            
             String passworValido = ("^[A-Za-z\\d$@$#_!%*?&]{06,15}$");
 
             if (password.matches(passworValido) == true) {
                 contraseña.setBorder(bordeAzul);
             } else {
                 if (password.matches(passworValido) == false) {
-                    JOptionPane.showMessageDialog(this, "debe tenerma caracteres alfanumericos"
-                            + "y ser mayor a 8");
+                 
+                      contraseña.setText("password: ******* ");
                     contraseña.setBorder(bordeRojo);
                 }
             }
@@ -555,12 +557,15 @@ public class Registro extends javax.swing.JFrame {
 
     private void verificarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarContraseñaFocusLost
         String password2 = new String(contraseña.getPassword());
-        if (password2.equals(password)) {
+        if (password2.equals(password)&& !password2.equals("")) {
             verificarContraseña.setBorder(bordeAzul);
-            //System.out.println(password2);
+            System.out.println(password2);
         } else {
-            JOptionPane.showMessageDialog(this, "Contaseña invalida");
+           // JOptionPane.showMessageDialog(this, "Contaseña invalida");
+          // if(password2.equals()){
             verificarContraseña.setBorder(bordeRojo);
+            verificarContraseña.setText("password: *******");
+          // }
         }
     }//GEN-LAST:event_verificarContraseñaFocusLost
 
@@ -626,9 +631,9 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList<String> emailRegistrado = new ArrayList<String>();
     private ArrayList<String> contraseñaUsuario = new ArrayList<String>();
     private ArrayList areaOperativa = new ArrayList();
-    private String nombreUsuario, apellidosUsuario, numeroCedula;
-    private String ciudadUsuario, emailUsuario, contraseñaUsuarioS;
-    private String empresaUsuario, localidad, password;
+    private String nombreUsuario="", apellidosUsuario="", numeroCedula="";
+    private String ciudadUsuario="", emailUsuario="", contraseñaUsuarioS="";
+    private String empresaUsuario="", localidad="", password;
     private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
     private Border bordeAzul = BorderFactory.createLineBorder(Color.BLUE);
     // Variables declaration - do not modify//GEN-BEGIN:variables
