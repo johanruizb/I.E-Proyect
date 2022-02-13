@@ -212,6 +212,9 @@ public class Evidencias extends javax.swing.JFrame {
         buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
         buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buscarMouseEntered(evt);
             }
@@ -236,15 +239,31 @@ public class Evidencias extends javax.swing.JFrame {
         pendientesAprobacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         panelSuperior.add(pendientesAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 130, 30));
 
-        barraBusqueda.setBackground(new java.awt.Color(187, 187, 187));
+        barraBusqueda.setBackground(new java.awt.Color(214, 214, 214));
         barraBusqueda.setText("Buscar...");
         barraBusqueda.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        barraBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                barraBusquedaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                barraBusquedaFocusLost(evt);
+            }
+        });
         barraBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                barraBusquedaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 barraBusquedaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 barraBusquedaMouseExited(evt);
+            }
+        });
+        barraBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                barraBusquedaKeyPressed(evt);
             }
         });
         panelSuperior.add(barraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 430, 40));
@@ -350,7 +369,7 @@ public class Evidencias extends javax.swing.JFrame {
         panelMenu.repaint();
         panelMenu.revalidate();
         restableserMenu(contador);
-        System.out.println("soy contador " + contador);
+      
     }//GEN-LAST:event_menuMouseClicked
 
     private void menuComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_menuComponentHidden
@@ -451,7 +470,7 @@ public class Evidencias extends javax.swing.JFrame {
 
     private void barraBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraBusquedaMouseEntered
         // TODO add your handling code here:
-        barraBusqueda.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        barraBusqueda.setCursor(new Cursor(Cursor.TEXT_CURSOR));
     }//GEN-LAST:event_barraBusquedaMouseEntered
 
     private void barraBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraBusquedaMouseExited
@@ -462,6 +481,47 @@ public class Evidencias extends javax.swing.JFrame {
     private void panelBotonMenuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelBotonMenuFocusLost
     
     }//GEN-LAST:event_panelBotonMenuFocusLost
+
+    private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
+      
+       if(barraBusqueda.getText().equals("")){
+        barraBusqueda.setText("Buscar...");
+        //System.out.println("basio");
+        }else{
+            if(buscando !="") barraBusqueda.setText(buscando);
+              buscando = barraBusqueda.getText();
+              System.out.println(buscando);
+             //System.out.println("entrando en el esle");
+             buscando ="";
+        }
+    }//GEN-LAST:event_buscarMouseClicked
+
+    private void barraBusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_barraBusquedaFocusGained
+        barraBusqueda.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+   
+        
+        
+    }//GEN-LAST:event_barraBusquedaFocusGained
+
+    private void barraBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_barraBusquedaFocusLost
+        // TODO add your handling code here:
+        if(barraBusqueda.equals("Buscar")|| barraBusqueda.equals("")){
+          barraBusqueda.setText("Buscar...");
+        }
+        
+    }//GEN-LAST:event_barraBusquedaFocusLost
+
+    private void barraBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraBusquedaMouseClicked
+        // TODO add your handling code here:
+        barraBusqueda.setText("");
+    }//GEN-LAST:event_barraBusquedaMouseClicked
+
+    private void barraBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_barraBusquedaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==10){
+            System.out.println("Enter funcionando");
+        }
+    }//GEN-LAST:event_barraBusquedaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -499,6 +559,7 @@ public class Evidencias extends javax.swing.JFrame {
         });
     }
   private static int contador=0;
+  private String buscando ="";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertas;
     private javax.swing.JLabel aprobadas;

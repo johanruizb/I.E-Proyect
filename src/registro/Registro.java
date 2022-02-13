@@ -236,7 +236,8 @@ public class Registro extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Registro de usario");
+        titulo.setText("Registro nuevo usuario");
+        titulo.setToolTipText("");
 
         creaRegistro.setBackground(new java.awt.Color(33, 150, 243));
         creaRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,6 +307,8 @@ public class Registro extends javax.swing.JFrame {
                 .addComponent(creaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
+
+        titulo.getAccessibleContext().setAccessibleName("Registro nuevo usuario");
 
         panel.add(panelPrincipal, new java.awt.GridBagConstraints());
 
