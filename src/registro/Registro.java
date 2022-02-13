@@ -6,6 +6,7 @@ package registro;
 
 import java.awt.Color;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.lang.Runnable;
@@ -14,6 +15,8 @@ import java.lang.Runnable;
  *
  * @author jr0237
 =======
+=======
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -25,6 +28,9 @@ import javax.swing.border.Border;
 /**
  *
  * @author Victor
+<<<<<<< HEAD
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
+=======
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
  */
 public class Registro extends javax.swing.JFrame {
@@ -45,6 +51,7 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         java.awt.GridBagConstraints gridBagConstraints;
 
         bg = new javax.swing.JPanel();
@@ -59,6 +66,8 @@ public class Registro extends javax.swing.JFrame {
         recordar = new javax.swing.JCheckBox();
         registro = new javax.swing.JLabel();
 =======
+=======
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 
         bg = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
@@ -75,6 +84,9 @@ public class Registro extends javax.swing.JFrame {
         verificarContraseña = new javax.swing.JPasswordField();
         titulo = new javax.swing.JLabel();
         creaRegistro = new javax.swing.JButton();
+<<<<<<< HEAD
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
+=======
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +98,10 @@ public class Registro extends javax.swing.JFrame {
         bg.setSize(new Dimension(501,288));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        panel.setBackground(new java.awt.Color(204,204,204));
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 =======
         panel.setBackground(new java.awt.Color(204,204,204));
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
@@ -93,6 +109,7 @@ public class Registro extends javax.swing.JFrame {
         panel.setPreferredSize(new java.awt.Dimension(896, 500));
         panel.setLayout(new java.awt.GridBagLayout());
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
@@ -202,6 +219,8 @@ public class Registro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
         panel.add(registro, gridBagConstraints);
 =======
+=======
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
         panelPrincipal.setBackground(new java.awt.Color(204,204,204));
         panelPrincipal.setToolTipText("");
         panelPrincipal.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -441,6 +460,9 @@ public class Registro extends javax.swing.JFrame {
         );
 
         panel.add(panelPrincipal, new java.awt.GridBagConstraints());
+<<<<<<< HEAD
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
+=======
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 
         bg.add(panel);
@@ -459,6 +481,7 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private void defaultText() {
         if ("".equals(correo.getText())) {
@@ -593,6 +616,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JCheckBox recordar;
     private javax.swing.JLabel registro;
 =======
+=======
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
     private void nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusLost
 
         if (nombre.getText().equals("")) {
@@ -880,6 +905,9 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JLabel titulo;
     private javax.swing.JPasswordField verificarContraseña;
+<<<<<<< HEAD
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
+=======
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
     // End of variables declaration//GEN-END:variables
 

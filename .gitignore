@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /dist/
 
 #BIN
 build/*
 =======
+=======
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
 # NetBeans specific #
 nbproject/private/*
 build/*
@@ -19,5 +22,9 @@ nb-configuration.xml
 # Package Files #
 *.jar
 *.war
+<<<<<<< HEAD
+*.ear
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
+=======
 *.ear
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
