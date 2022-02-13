@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 /dist/
 
 #BIN
 build/*
+=======
+# NetBeans specific #
+nbproject/private/*
+build/*
+nbbuild/*
+dist/*
+nbdist/*
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
