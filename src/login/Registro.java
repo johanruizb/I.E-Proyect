@@ -1,9 +1,9 @@
+package login;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package registro;
-
 import java.awt.Color;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -872,7 +872,6 @@ public class Registro extends javax.swing.JFrame {
         emailRegistrado.add(emailUsuario);
         contraseñaUsuario.add(password);
         areaOperativa.add(localidad);
-
     }//GEN-LAST:event_creaRegistroMouseClicked
 
     private ArrayList listaNombre = new ArrayList();
@@ -880,12 +879,13 @@ public class Registro extends javax.swing.JFrame {
     private ArrayList cedulaUsuarios = new ArrayList();
     private ArrayList listaCiudades = new ArrayList();
     private ArrayList IdUsiario = new ArrayList();
+    private ArrayList areaOperativa = new ArrayList();
     private ArrayList<String> emailRegistrado = new ArrayList<String>();
     private ArrayList<String> contraseñaUsuario = new ArrayList<String>();
-    private ArrayList areaOperativa = new ArrayList();
-    private String nombreUsuario="", apellidosUsuario="", numeroCedula="";
-    private String ciudadUsuario="", emailUsuario="";
-    private String empresaUsuario, localidad, password;
+
+    private String nombreUsuario = "", apellidosUsuario = "", numeroCedula = "";
+    private String ciudadUsuario = "", emailUsuario = "";
+    private String empresaUsuario = "", localidad = "", password = "";
     private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
     private Border bordeAzul = BorderFactory.createLineBorder(Color.BLUE);
 
@@ -910,5 +910,4 @@ public class Registro extends javax.swing.JFrame {
 =======
 >>>>>>> e6c1cdd4d03d49130096891c68fd608634c10b88
     // End of variables declaration//GEN-END:variables
-
 }
