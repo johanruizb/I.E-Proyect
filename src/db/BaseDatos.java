@@ -1,9 +1,10 @@
-package login;
+package db;
 
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import login.Usuario;
 
 /**
  * BaseDatos. Clase que se encarga de las transacciones con la base de datos.
