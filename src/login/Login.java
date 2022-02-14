@@ -57,7 +57,7 @@ public class Login extends javax.swing.JFrame {
         panel.setLayout(new java.awt.GridBagLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/1.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -81,10 +81,10 @@ public class Login extends javax.swing.JFrame {
         });
         entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
 
-        iconEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/correo.png"))); // NOI18N
+        iconEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/correo.png"))); // NOI18N
         entradas.add(iconEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        iconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/password.png"))); // NOI18N
+        iconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/password.png"))); // NOI18N
         entradas.add(iconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
         contraseña.setForeground(new java.awt.Color(204, 204, 204));
