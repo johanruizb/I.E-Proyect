@@ -8,10 +8,11 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.lang.Runnable;
+import registro.Registro;
 
 /**
  *
- * @author johan
+ * @author jr0237
  */
 public class Login extends javax.swing.JFrame {
 
