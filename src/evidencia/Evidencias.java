@@ -41,6 +41,7 @@ public class Evidencias extends javax.swing.JFrame {
         alertas = new javax.swing.JLabel();
         panelBotonConfiguracion = new javax.swing.JPanel();
         configuracion = new javax.swing.JLabel();
+        centraConponente = new javax.swing.JPanel();
         panelSuperior = new javax.swing.JPanel();
         identificacion = new javax.swing.JLabel();
         buscar = new javax.swing.JLabel();
@@ -206,7 +207,7 @@ public class Evidencias extends javax.swing.JFrame {
                 identificacionMouseExited(evt);
             }
         });
-        panelSuperior.add(identificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 50, -1));
+        panelSuperior.add(identificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
         identificacion.getAccessibleContext().setAccessibleName("");
 
         buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
@@ -227,17 +228,50 @@ public class Evidencias extends javax.swing.JFrame {
         aprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aprobadas.setText("Evidencias aprobadas");
         aprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        panelSuperior.add(aprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, 30));
+        aprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aprobadasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                aprobadasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aprobadasMouseExited(evt);
+            }
+        });
+        panelSuperior.add(aprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 130, 30));
 
         noAprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         noAprobadas.setText("Evidencias no aprobadas");
         noAprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        panelSuperior.add(noAprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, 30));
+        noAprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseExited(evt);
+            }
+        });
+        panelSuperior.add(noAprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 150, 30));
 
         pendientesAprobacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pendientesAprobacion.setText("Evidencias pendientes");
         pendientesAprobacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        panelSuperior.add(pendientesAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 130, 30));
+        pendientesAprobacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseExited(evt);
+            }
+        });
+        panelSuperior.add(pendientesAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 130, 30));
 
         barraBusqueda.setBackground(new java.awt.Color(214, 214, 214));
         barraBusqueda.setText("Buscar...");
@@ -266,15 +300,17 @@ public class Evidencias extends javax.swing.JFrame {
                 barraBusquedaKeyPressed(evt);
             }
         });
-        panelSuperior.add(barraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 430, 40));
+        panelSuperior.add(barraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 480, 40));
 
-        paneInferior.add(panelSuperior, java.awt.BorderLayout.CENTER);
+        centraConponente.add(panelSuperior);
+
+        paneInferior.add(centraConponente, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneInferior, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+            .addComponent(paneInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,6 +559,62 @@ public class Evidencias extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_barraBusquedaKeyPressed
 
+    private void aprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseExited
+               aprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+    }//GEN-LAST:event_aprobadasMouseExited
+
+    private void aprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseEntered
+        // TODO add your handling code here:
+          aprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+          
+    }//GEN-LAST:event_aprobadasMouseEntered
+
+    private void aprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseClicked
+        // TODO add your handling code here:
+        aprobadas.setOpaque(true);
+        aprobadas.setBackground(new Color(33, 150, 243));
+         pendientesAprobacion.setBackground(new Color(214,214,214));
+        noAprobadas.setBackground(new Color(214,214,214));
+    }//GEN-LAST:event_aprobadasMouseClicked
+
+    private void noAprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseEntered
+        // TODO add your handling code here:
+         noAprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_noAprobadasMouseEntered
+
+    private void noAprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseExited
+        // TODO add your handling code here:
+        noAprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+    }//GEN-LAST:event_noAprobadasMouseExited
+
+    private void noAprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseClicked
+        // TODO add your handling code here:
+        noAprobadas.setOpaque(true);
+        aprobadas.setBackground(new Color(214,214,214));
+        noAprobadas.setBackground(new Color(33, 150, 243));
+        pendientesAprobacion.setBackground(new Color(214,214,214));
+    }//GEN-LAST:event_noAprobadasMouseClicked
+
+    private void pendientesAprobacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseEntered
+        // TODO add your handling code here:
+        pendientesAprobacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_pendientesAprobacionMouseEntered
+
+    private void pendientesAprobacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseExited
+        // TODO add your handling code here:
+        pendientesAprobacion.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+    }//GEN-LAST:event_pendientesAprobacionMouseExited
+
+    private void pendientesAprobacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseClicked
+        // TODO add your handling code here:
+        pendientesAprobacion.setOpaque(true);
+        pendientesAprobacion.setBackground(new Color(33, 150, 243));
+        aprobadas.setBackground(new Color(214,214,214));
+        noAprobadas.setBackground(new Color(214,214,214));
+        
+    }//GEN-LAST:event_pendientesAprobacionMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -560,12 +652,14 @@ public class Evidencias extends javax.swing.JFrame {
     }
   private static int contador=0;
   private String buscando ="";
+  private ManejadorEvidencia componente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertas;
     private javax.swing.JLabel aprobadas;
     private javax.swing.JLabel archivo;
     private javax.swing.JTextField barraBusqueda;
     private javax.swing.JLabel buscar;
+    private javax.swing.JPanel centraConponente;
     private javax.swing.JLabel configuracion;
     private javax.swing.JLabel identificacion;
     private javax.swing.JLabel menu;
