@@ -17,6 +17,7 @@ public class BaseDatos {
 
     private static Connection conn = null;
 
+/*
     public static void main(String[] args) {
         BaseDatos transacciones = new BaseDatos();
         transacciones.conectarBD();
@@ -25,11 +26,9 @@ public class BaseDatos {
 
         ArrayList<String> result = consultarInformacion(consultas, valores);
 
-        for (String s : result) {
-            System.err.println(s);
-        }
+        System.out.println("Resultado " + result);
     }
-
+*/
     /**
      * conectarBD. Metoddo que se encarga de crear la conexion con la base de
      * datos.
@@ -42,6 +41,7 @@ public class BaseDatos {
 
             String url = "jdbc:postgresql://localhost:5432/post_evidence";
             conn = DriverManager.getConnection(url, "root", "root");
+            System.out.printf("Conexion en %s establecida con '%s'\n\n", url.split("/")[2], url.split("/")[3]);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,9 +70,9 @@ public class BaseDatos {
         };
 
         String[] valores = new String[]{
-            String.format("(%s, %s, %s, %s)", infoPersonal[0], infoPersonal[1], infoPersonal[2], infoPersonal[3]),
-            String.format("(%s, %s, %s)", infoPersonal[0], infoAcceso[0], infoAcceso[1]),
-            String.format("(%s, %s, %s, %s)", infoPersonal[0], infoLocacion[0], infoLocacion[1], infoLocacion[2])
+            String.format("('%s', '%s', '%s', '%s')", infoPersonal[0], infoPersonal[1], infoPersonal[2], infoPersonal[3]),
+            String.format("('%s', '%s', '%s')", infoPersonal[0], infoAcceso[0], infoAcceso[1]),
+            String.format("('%s', '%s', '%s', '%s')", infoPersonal[0], infoLocacion[0], infoLocacion[1], infoLocacion[2])
         };
 
         // Ejecutar consultas usando el for
@@ -91,21 +91,14 @@ public class BaseDatos {
         for (int i = 0; i < consultas.length; i++) {
 
             ResultSet rs = null;
-            PreparedStatement st = null;
+            Statement st = null;
 
             try {
 
                 conn.setAutoCommit(true);
-                st = conn.prepareStatement("INSERT INTO ? VALUES ?");
-                st.setString(1, consultas[i]);
-                st.setString(2, valores[i]);
-
-                rs = st.executeQuery();
-
-                while (rs.next()) {
-                    System.out.print("Insertar \'");
-                    System.out.println(rs.getString(1) + "\'");
-                }
+                st = conn.createStatement();
+                String consulta = String.format("INSERT INTO %s VALUES %s;", consultas[i], valores[i]);
+                rs = st.executeQuery(consulta);
             } catch (SQLException ex) {
                 Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
@@ -145,6 +138,7 @@ public class BaseDatos {
                 st = conn.createStatement();
 
                 String consulta = String.format("SELECT %s FROM %s;", consultas[i], valores[i]);
+                System.out.println("Consulta: " + consulta);
                 rs = st.executeQuery(consulta);
 
                 row = row(rs);

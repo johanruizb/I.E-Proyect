@@ -8,8 +8,6 @@ import db.BaseDatos;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.lang.Runnable;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import registro.Registro;
 
@@ -286,6 +284,7 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -331,5 +330,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox recordar;
     private javax.swing.JLabel registro;
     // End of variables declaration//GEN-END:variables
-
 }
