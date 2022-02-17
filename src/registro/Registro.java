@@ -4,19 +4,17 @@
  */
 package registro;
 
+import db.BaseDatos;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
-import java.lang.Runnable;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import login.Login;
+import login.Usuario;
 
 /**
  *
@@ -78,6 +76,9 @@ public class Registro extends javax.swing.JFrame {
         nombre.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         nombre.setText("Nombre:");
         nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nombreFocusLost(evt);
             }
@@ -208,7 +209,7 @@ public class Registro extends javax.swing.JFrame {
 
         contraseña.setBackground(new java.awt.Color(255, 255, 255));
         contraseña.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
-        contraseña.setText("jPasswordField1");
+        contraseña.setText("Contraseña:");
         contraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 contraseñaFocusLost(evt);
@@ -222,7 +223,7 @@ public class Registro extends javax.swing.JFrame {
 
         verificarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         verificarContraseña.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
-        verificarContraseña.setText("jPasswordField2");
+        verificarContraseña.setText("Contraseña:");
         verificarContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 verificarContraseñaFocusLost(evt);
@@ -308,8 +309,6 @@ public class Registro extends javax.swing.JFrame {
                 .addGap(54, 54, 54))
         );
 
-        titulo.getAccessibleContext().setAccessibleName("Registro nuevo usuario");
-
         panel.add(panelPrincipal, new java.awt.GridBagConstraints());
 
         bg.add(panel);
@@ -328,27 +327,155 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean isWhiteSpace(JTextField componente) {
+        if (!isEmpty(componente)) {
+            String textComponent = String.valueOf(componente.getText());
+            for (String s : textComponent.split("(?!^)")) {
+                if (s.equals(" ")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isEmpty(JTextField componente) {
+        String textComponent = String.valueOf(componente.getText());
+        if (textComponent.equals("")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isCorrect(JTextField componente) {
+        if (!isEmpty(componente) && !isWhiteSpace(componente)) {
+            return true;
+        }
+        return false;
+    }
+
+    private void comprobacionBasica(JTextField componente, String defaultText) {
+        String textComponent = String.valueOf(componente.getText());
+
+        if (!textComponent.equals(defaultText)) {
+            if (isEmpty(componente) || isWhiteSpace(componente)) {
+                componente.setBorder(bordeRojo);
+                componente.setText(defaultText);
+            } else if (isCorrect(componente)) {
+                componente.setBorder(bordeAzul);
+            }
+        }
+    }
+
+    private void setEmptyText(JTextField componente, String defaultText) {
+        String textComponent = String.valueOf(componente.getText());
+        if (textComponent.equals(defaultText)) {
+            componente.setText("");
+        }
+    }
+
+    private boolean validarInfoPersonal() {
+        int i = 0;
+
+        if (isCorrect(nombre) && !nombre.getText().equals("Nombre:")) {
+            i++;
+        } else {
+            nombre.setBorder(bordeRojo);
+        }
+
+        if (!isEmpty(apellidos) && !apellidos.getText().equals("Apellidos:")) {
+            i++;
+        } else {
+            apellidos.setBorder(bordeRojo);
+        }
+
+        if (isCorrect(cedula) && !cedula.getText().equals("Número de cedula:")) {
+            i++;
+        } else {
+            cedula.setBorder(bordeRojo);
+        }
+
+        if (i == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean validarInfoAcceso() {
+        int i = 0;
+
+        String email1 = email.getText();
+        String email2 = comprobarEmail.getText();
+        String passW1 = new String(contraseña.getPassword());
+        String passW2 = new String(verificarContraseña.getPassword());
+
+        System.out.println("validandoEmail(email1) && validandoEmail(email2) " + (validandoEmail(email1) && validandoEmail(email2)));
+        System.out.println("email1.equals(email2) " + email1.equals(email2));
+
+        System.out.println("email1 " + email1);
+        System.out.println("email2 " + email2);
+
+        if (validandoEmail(email1) && validandoEmail(email2) && email1.equals(email2)) {
+            i++;
+        } else {
+            email.setBorder(bordeRojo);
+            comprobarEmail.setBorder(bordeRojo);
+        }
+        if (comprobarContraseña(passW1) && comprobarContraseña(passW2) && passW1.equals(passW2)) {
+            i++;
+        } else {
+            contraseña.setBorder(bordeRojo);
+            verificarContraseña.setBorder(bordeRojo);
+        }
+        if (i == 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean validarInfoLocacion() {
+        int i = 0;
+
+        if (isCorrect(ciudad) && !ciudad.getText().equals("Ciudad:")) {
+            i++;
+        } else {
+            ciudad.setBorder(bordeRojo);
+        }
+
+        if (isCorrect(departamento) && !departamento.getText().equals("Area Operativa:")) {
+            i++;
+        } else {
+            departamento.setBorder(bordeRojo);
+        }
+
+        if (isCorrect(nombreEmpresa) && !nombreEmpresa.getText().equals("Empresa:")) {
+            i++;
+        } else {
+            nombreEmpresa.setBorder(bordeRojo);
+        }
+
+        if (i == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean comprobarDatos() {
+        validarInfoPersonal();
+        validarInfoAcceso();
+        validarInfoLocacion();
+        return (validarInfoPersonal() && validarInfoAcceso() && validarInfoLocacion());
+    }
 
     private void nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusLost
-
-        if (nombre.getText().equals("")) {
-          
-            nombre.setBorder(bordeRojo);
-            nombre.setText("Nombres: ");
-
-        } else if (nombre.getText() != "") {
-            nombreUsuario = nombre.getText();
-            nombre.setText(nombreUsuario);
-            nombre.setBorder(bordeAzul);
-        }
+        comprobacionBasica(nombre, "Nombre:");
     }//GEN-LAST:event_nombreFocusLost
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
-
-        if (evt.getSource().equals(nombre)) {
-            nombre.setText("");
-
-        }
+        setEmptyText(nombre, "Nombre:");
     }//GEN-LAST:event_nombreMouseClicked
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -356,46 +483,27 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void apellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidosFocusLost
-
-        if (apellidos.getText().equals("")) {
-          
-            apellidos.setBorder(bordeRojo);
-            apellidos.setText("Apellidos: ");
-        } else if (apellidos.getText() != "") {
-            apellidosUsuario = apellidos.getText();
-            apellidos.setText(apellidosUsuario);
-            apellidos.setBorder(bordeAzul);
+        if (!apellidos.getText().equals("Apellidos:")) {
+            if (!isEmpty(apellidos)) {
+                apellidos.setBorder(bordeAzul);
+            } else {
+                apellidos.setBorder(bordeRojo);
+                apellidos.setText("Apellidos:");
+            }
         }
     }//GEN-LAST:event_apellidosFocusLost
 
     private void apellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidosMouseClicked
         // TODO add your handling code here:
-        if (evt.getSource().equals(apellidos)) {
-            apellidos.setText("");
-
-        }
+        setEmptyText(apellidos, "Apellidos:");
     }//GEN-LAST:event_apellidosMouseClicked
 
     private void cedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusLost
-
-        if (cedula.getText().equals("")) {
-         
-            cedula.setBorder(bordeRojo);
-            cedula.setText("Cedula:");
-
-        } else if (cedula.getText() != "") {
-            numeroCedula = cedula.getText();
-            cedula.setText(numeroCedula);
-            cedula.setBorder(bordeAzul);
-        }
+        comprobacionBasica(cedula, "Número de cedula:");
     }//GEN-LAST:event_cedulaFocusLost
 
     private void cedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cedulaMouseClicked
-
-        if (evt.getSource().equals(cedula)) {
-            cedula.setText("");
-
-        }
+        setEmptyText(cedula, "Número de cedula:");
     }//GEN-LAST:event_cedulaMouseClicked
 
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
@@ -403,85 +511,61 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_cedulaActionPerformed
 
     private void ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusLost
-
-        if (ciudad.getText().equals("")) {
-          
-            ciudad.setBorder(bordeRojo);
-            ciudad.setText("Ciudad:");
-        } else if (ciudad.getText() != "") {
-            ciudadUsuario = ciudad.getText();
-            ciudad.setText(ciudadUsuario);
-            ciudad.setBorder(bordeAzul);
-        }
+        comprobacionBasica(ciudad, "Ciudad:");
     }//GEN-LAST:event_ciudadFocusLost
 
     private void ciudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ciudadMouseClicked
-
-        if (evt.getSource().equals(ciudad)) {
-            ciudad.setText("");
-        }
+        setEmptyText(ciudad, "Ciudad:");
     }//GEN-LAST:event_ciudadMouseClicked
 
     private void emailMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseDragged
         // TODO add your handling code here:
     }//GEN-LAST:event_emailMouseDragged
-    private void validandoEmail(String emailEntrante) {
-
+    private boolean validandoEmail(String emailEntrante) {
         String validacion = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
         Pattern pattern = Pattern.compile(validacion);
         Matcher matcher = pattern.matcher(emailEntrante);
 
-        if (matcher.matches() == true) {
+        if (matcher.matches()) {
             //JOptionPane.showMessageDialog(this, "Email correcto");
             email.setBorder(bordeAzul);
-           
+            return true;
         } else {
-            if (matcher.matches() == false) {
-                email.setBorder(bordeRojo);
-            }
+            email.setBorder(bordeRojo);
+            return false;
         }
     }
     private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
-
-        if (email.getText().equals("")) {
-           
-            email.setText("email: ");
-            email.setBorder(bordeRojo);
-        } else if (email.getText() != "email") {
-            emailUsuario = email.getText();
-            validandoEmail(emailUsuario);
-
-            email.setText(emailUsuario);
-             email.setBorder(bordeAzul);
+        if (!email.getText().equals("Email:")) {
+            if (!isCorrect(email)) {
+                comprobacionBasica(email, "Email:");
+            } else {
+                validandoEmail(email.getText());
+            }
         }
     }//GEN-LAST:event_emailFocusLost
 
     private void emailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseClicked
-        if (evt.getSource().equals(email)) {
-            email.setText("");
-        }
+        setEmptyText(email, "Email:");
     }//GEN-LAST:event_emailMouseClicked
 
     private void comprobarEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comprobarEmailFocusLost
-
-        if (emailUsuario.equals(comprobarEmail.getText())&& 
-                                 !comprobarEmail.getText().equals("")) {
-            comprobarEmail.setBorder(bordeAzul);
-        } else {
-            if(comprobarEmail.getText().equals("")){
-                comprobarEmail.setText("email: ");
-            
-            comprobarEmail.setBorder(bordeRojo);
+        if (!comprobarEmail.getText().equals("Comprobar Email:")) {
+            String emailUsuario = email.getText();
+            if (emailUsuario.equals(comprobarEmail.getText())
+                    && isCorrect(comprobarEmail)) {
+                comprobarEmail.setBorder(bordeAzul);
+                email.setBorder(bordeAzul);
+            } else {
+                comprobarEmail.setBorder(bordeRojo);
+                email.setBorder(bordeRojo);
+                comprobarEmail.setText("Comprobar Email:");
             }
-
         }
     }//GEN-LAST:event_comprobarEmailFocusLost
 
     private void comprobarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprobarEmailMouseClicked
-
-        if (evt.getSource().equals(comprobarEmail)) {
-            comprobarEmail.setText("");
-        }
+        setEmptyText(comprobarEmail, "Comprobar Email:");
     }//GEN-LAST:event_comprobarEmailMouseClicked
 
     private void comprobarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarEmailActionPerformed
@@ -489,154 +573,124 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_comprobarEmailActionPerformed
 
     private void nombreEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreEmpresaFocusLost
-
-        if (nombreEmpresa.getText().equals("")) {
-            //JOptionPane.showMessageDialog(this, "Campo no valido");
-            nombreEmpresa.setBorder(bordeRojo);
-            nombreEmpresa.setText("Empresa: ");
-        } else if (nombreEmpresa.getText() != "") {
-            empresaUsuario = nombreEmpresa.getText();
-            nombreEmpresa.setText("Empresa");
-            nombreEmpresa.setBorder(bordeAzul);
-        }
+        comprobacionBasica(nombreEmpresa, "Empresa:");
     }//GEN-LAST:event_nombreEmpresaFocusLost
 
     private void nombreEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEmpresaMouseClicked
-
-        if (evt.getSource().equals(nombreEmpresa)) {
-            nombreEmpresa.setText("");
-        }
+        setEmptyText(nombreEmpresa, "Empresa:");
     }//GEN-LAST:event_nombreEmpresaMouseClicked
 
     private void departamentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departamentoFocusLost
-
-        if (departamento.getText().equals("")) {
-            //JOptionPane.showMessageDialog(this, "Campo no valido");
-            departamento.setText("Area operativa ");
-            departamento.setBorder(bordeRojo);
-        } else if (departamento.getText() != "") {
-            localidad = departamento.getText();
-            departamento.setText(localidad);
-            departamento.setBorder(bordeAzul);
-        }
+        comprobacionBasica(departamento, "Area Operativa:");
     }//GEN-LAST:event_departamentoFocusLost
 
     private void departamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_departamentoMouseClicked
-
-        if (evt.getSource().equals(departamento)) {
-            departamento.setText("");
-        }
+        setEmptyText(departamento, "Area Operativa:");
     }//GEN-LAST:event_departamentoMouseClicked
 
     private void contraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusLost
-        // TODO add your handling code here:
-        if (contraseña.getPassword().equals("")) {
-            contraseña.setText("password: ******* ");
-            contraseña.setBorder(bordeRojo);
-        } else if (password != "") {
-            password = new String(contraseña.getPassword());
-            
-            String passworValido = ("^[A-Za-z\\d$@$#_!%*?&]{06,15}$");
+        String password = new String(contraseña.getPassword());
+        if (!password.equals("Contraseña:")) {
+            if (!isCorrect(contraseña)) {
+                contraseña.setBorder(bordeRojo);
+                contraseña.setText("Contraseña:");
+            } else if (isCorrect(contraseña)) {
 
-            if (password.matches(passworValido) == true) {
-                contraseña.setBorder(bordeAzul);
-            } else {
-                if (password.matches(passworValido) == false) {
-                 
-                      contraseña.setText("password: ******* ");
+                if (comprobarContraseña(password)) {
+                    contraseña.setBorder(bordeAzul);
+                } else {
                     contraseña.setBorder(bordeRojo);
+                    contraseña.setText("Contraseña:");
                 }
             }
-
         }
     }//GEN-LAST:event_contraseñaFocusLost
 
+    private boolean comprobarContraseña(String passW) {
+        String passworValido = ("^[A-Za-z\\d$@$#_!%*?&]{06,15}$");
+
+        Pattern patron = Pattern.compile(passworValido);
+        Matcher comparar = patron.matcher(passW);
+
+        return comparar.matches();
+    }
+
     private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
-        // TODO add your handling code here:
-        if (evt.getSource().equals(contraseña)) {
-            contraseña.setText("");
-        }
+        setEmptyText(contraseña, "Contraseña:");
     }//GEN-LAST:event_contraseñaMouseClicked
 
     private void verificarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarContraseñaFocusLost
-        String password2 = new String(contraseña.getPassword());
-        if (password2.equals(password)&& !password2.equals("")) {
-            verificarContraseña.setBorder(bordeAzul);
-            System.out.println(password2);
-        } else {
-           // JOptionPane.showMessageDialog(this, "Contaseña invalida");
-          // if(password2.equals()){
-            verificarContraseña.setBorder(bordeRojo);
-            verificarContraseña.setText("password: *******");
-          // }
+        String password = new String(contraseña.getPassword());
+        String password2 = new String(verificarContraseña.getPassword());
+
+        if (!(password.equals("Contraseña:") && password2.equals("Contraseña:"))) {
+            if (password2.equals(password) && !isEmpty(contraseña)) {
+                verificarContraseña.setBorder(bordeAzul);
+                contraseña.setBorder(bordeAzul);
+            } else {
+                verificarContraseña.setBorder(bordeRojo);
+                verificarContraseña.setText("Contraseña:");
+                contraseña.setBorder(bordeRojo);
+            }
         }
     }//GEN-LAST:event_verificarContraseñaFocusLost
 
     private void verificarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verificarContraseñaMouseClicked
-
-        if (evt.getSource().equals(verificarContraseña)) {
-            verificarContraseña.setText("");
-        }
+        setEmptyText(verificarContraseña, "Contraseña:");
     }//GEN-LAST:event_verificarContraseñaMouseClicked
 
     private void creaRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creaRegistroMouseClicked
-        listaNombre.add(nombreUsuario);
-        listaApellidos.add(apellidosUsuario);
-        cedulaUsuarios.add(numeroCedula);
-        listaCiudades.add(ciudadUsuario);
-        IdUsiario.add(numeroCedula);
-        emailRegistrado.add(emailUsuario);
-        contraseñaUsuario.add(password);
-        areaOperativa.add(localidad);
 
-    }//GEN-LAST:event_creaRegistroMouseClicked
-    /**
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        if (comprobarDatos()) {
+            BaseDatos.conectarBD();
+            Usuario user = new Usuario();
+            user.setInformacionPersonal(cedula.getText(), nombre.getText(), apellidos.getText());
+            user.setInformacionAcceso(email.getText(), String.valueOf(contraseña.getPassword()));
+            user.setInformacionLocacion(ciudad.getText(), nombreEmpresa.getText(), departamento.getText());
+            BaseDatos.añadirUsuario(user);
+
+            this.dispose();
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
                 }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+            //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Registro().setVisible(true);
-            }
-        });
-    }
-    private ArrayList listaNombre = new ArrayList();
-    private ArrayList listaApellidos = new ArrayList();
-    private ArrayList cedulaUsuarios = new ArrayList();
-    private ArrayList listaCiudades = new ArrayList();
-    private ArrayList IdUsiario = new ArrayList();
-    private ArrayList<String> emailRegistrado = new ArrayList<String>();
-    private ArrayList<String> contraseñaUsuario = new ArrayList<String>();
-    private ArrayList areaOperativa = new ArrayList();
-    private String nombreUsuario="", apellidosUsuario="", numeroCedula="";
-    private String ciudadUsuario="", emailUsuario="", contraseñaUsuarioS="";
-    private String empresaUsuario="", localidad="", password;
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new Login().setVisible(true);
+                }
+            });
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Formulario incompleto o incorrecto algun campo\nPor favor, revisalo e intentalo de nuevo");
+        }
+    }//GEN-LAST:event_creaRegistroMouseClicked
+
+    private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
+        // TODO add your handling code here:
+        setEmptyText(nombre, "Nombre:");
+    }//GEN-LAST:event_nombreFocusGained
+
     private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
     private Border bordeAzul = BorderFactory.createLineBorder(Color.BLUE);
     // Variables declaration - do not modify//GEN-BEGIN:variables

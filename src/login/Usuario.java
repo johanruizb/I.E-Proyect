@@ -10,7 +10,7 @@ public class Usuario {
     private String emailUsuario = "", password = "";
     private String ciudadUsuario = "", empresaUsuario = "", localidadUsuario = "";
 
-    public void setInformacionPersonal(String nombre, String apellidos, String documento) {
+    public void setInformacionPersonal(String documento, String nombre, String apellidos) {
         if ("".equals(nombreUsuario + apellidosUsuario + numeroCedula)) {
             nombreUsuario = nombre;
             apellidosUsuario = apellidos;
@@ -43,8 +43,14 @@ public class Usuario {
     public String[] getInformacionPersonal() {
         if (!"".equals(nombreUsuario + apellidosUsuario + numeroCedula)) {
 
+            boolean lastname = apellidosUsuario.split(" ").length > 1;
+            boolean lastnameLength = false;
+            if (lastname) {
+                lastnameLength = (apellidosUsuario.split(" ")[1]).length() > 1;
+            }
+
             String apellido1 = apellidosUsuario.split(" ")[0];
-            String apellido2 = (apellidosUsuario.split(" ")[1]).length() > 1 ? (apellidosUsuario.split(" ")[1]) : "NONE";
+            String apellido2 = lastname && lastnameLength ? (apellidosUsuario.split(" ")[1]) : "NONE";
 
             return new String[]{numeroCedula, nombreUsuario, apellido1, apellido2};
         }

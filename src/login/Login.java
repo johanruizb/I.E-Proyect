@@ -4,10 +4,11 @@
  */
 package login;
 
+import db.BaseDatos;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.lang.Runnable;
+import javax.swing.JOptionPane;
 import registro.Registro;
 
 /**
@@ -36,12 +37,12 @@ public class Login extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
+        ingresar = new javax.swing.JButton();
         entradas = new javax.swing.JPanel();
         correo = new javax.swing.JTextField();
         iconEmail = new javax.swing.JLabel();
         iconPass = new javax.swing.JLabel();
         contraseña = new javax.swing.JPasswordField();
-        ingresar = new javax.swing.JButton();
         recordar = new javax.swing.JCheckBox();
         registro = new javax.swing.JLabel();
 
@@ -57,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         panel.setLayout(new java.awt.GridBagLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/1.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -65,10 +66,29 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         panel.add(logo, gridBagConstraints);
 
+        ingresar.setBackground(new java.awt.Color(33, 150, 243));
+        ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        ingresar.setText("Ingresar");
+        ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ingresar.setMaximumSize(new java.awt.Dimension(100, 35));
+        ingresar.setMinimumSize(new java.awt.Dimension(100, 35));
+        ingresar.setPreferredSize(new java.awt.Dimension(100, 35));
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        panel.add(ingresar, gridBagConstraints);
+
         entradas.setOpaque(false);
         entradas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        correo.setForeground(new java.awt.Color(204, 204, 204));
+        correo.setForeground(new java.awt.Color(0, 0, 0));
         correo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 correoMouseClicked(evt);
@@ -81,10 +101,10 @@ public class Login extends javax.swing.JFrame {
         });
         entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
 
-        iconEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/correo.png"))); // NOI18N
+        iconEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/correo.png"))); // NOI18N
         entradas.add(iconEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        iconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/password.png"))); // NOI18N
+        iconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/password.png"))); // NOI18N
         entradas.add(iconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
         contraseña.setForeground(new java.awt.Color(204, 204, 204));
@@ -107,25 +127,6 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         panel.add(entradas, gridBagConstraints);
-
-        ingresar.setBackground(new java.awt.Color(33, 150, 243));
-        ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        ingresar.setText("Ingresar");
-        ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ingresar.setMaximumSize(new java.awt.Dimension(100, 35));
-        ingresar.setMinimumSize(new java.awt.Dimension(100, 35));
-        ingresar.setPreferredSize(new java.awt.Dimension(100, 35));
-        ingresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        panel.add(ingresar, gridBagConstraints);
 
         recordar.setText("Recordar usuario");
         recordar.setContentAreaFilled(false);
@@ -183,18 +184,42 @@ public class Login extends javax.swing.JFrame {
     private void defaultText() {
         if ("".equals(correo.getText())) {
             correo.setText("Correo o usuario");
-            contraseña.setForeground(new Color(204, 204, 204));
+            correo.setForeground(new Color(204, 204, 204));
+
+        } else if (!"Correo o usuario".equals(correo.getText())) {
+            correo.setForeground(Color.BLACK);
         }
+
         if ("".equals(String.valueOf(contraseña.getPassword()))) {
             contraseña.setText("Contraseña");
             contraseña.setForeground(new Color(204, 204, 204));
-            correo.setForeground(new Color(204, 204, 204));
+
+        } else if (!"Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setForeground(Color.BLACK);
         }
     }
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         // TODO add your handling code here:
+        ingresar.setEnabled(false);
+
+        String email = !"Correo o usuario".equals(correo.getText())
+                ? correo.getText()
+                : "NONE";
+
+        String contraseña = !"Contraseña".equals(String.valueOf(this.contraseña.getPassword()))
+                ? String.valueOf(this.contraseña.getPassword())
+                : "NONE";
+
+        BaseDatos.conectarBD();
+        if (BaseDatos.iniciarSesion(email, contraseña)) {
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Contraseña erronea o usuario inexistente");
+        }
         defaultText();
+
+        ingresar.setEnabled(true);
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void recordarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordarActionPerformed
@@ -212,28 +237,19 @@ public class Login extends javax.swing.JFrame {
 
     private void correoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoMouseClicked
         // TODO add your handling code here:
+        defaultText();
         if ("Correo o usuario".equals(correo.getText())) {
             correo.setText("");
             correo.setForeground(Color.BLACK);
-        }
-
-        if ("".equals(String.valueOf(contraseña.getPassword()))) {
-            contraseña.setText("Contraseña");
-            contraseña.setForeground(new Color(204, 204, 204));
-            correo.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_correoMouseClicked
 
     private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
         // TODO add your handling code here:
+        defaultText();
         if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
             contraseña.setText("");
             contraseña.setForeground(Color.BLACK);
-        }
-        if ("".equals(correo.getText())) {
-            correo.setText("Correo o usuario");
-            contraseña.setForeground(new Color(204, 204, 204));
-            correo.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_contraseñaMouseClicked
 
@@ -268,6 +284,7 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -313,5 +330,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox recordar;
     private javax.swing.JLabel registro;
     // End of variables declaration//GEN-END:variables
-
 }
