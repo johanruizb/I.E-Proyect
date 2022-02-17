@@ -321,9 +321,6 @@
                     <Property name="text" type="java.lang.String" value="Registro nuevo usuario"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Registro nuevo usuario"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JButton" name="creaRegistro">
                   <Properties>

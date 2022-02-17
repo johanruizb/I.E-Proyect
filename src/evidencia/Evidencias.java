@@ -8,6 +8,9 @@ package evidencia;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,6 +23,33 @@ public class Evidencias extends javax.swing.JFrame {
      */
     public Evidencias() {
         initComponents();
+        addComponent();
+    }
+
+    private void addComponent() {
+
+        System.out.println("Agregando...");
+        contenedorEvidencias.setLayout(new GridLayout(8, 0, 20, 2));
+        ManejadorEvidencia ev1 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev2 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "rechachado", "RECHAZADA");
+        ManejadorEvidencia ev3 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
+        ManejadorEvidencia ev4 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
+        ManejadorEvidencia ev5 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
+        ManejadorEvidencia ev6 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev7 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "rechazado", "RECHAZADA");
+        ManejadorEvidencia ev8 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
+        contenedorEvidencias.add(ev1);
+        contenedorEvidencias.add(ev2);
+        contenedorEvidencias.add(ev3);
+        contenedorEvidencias.add(ev4);
+        contenedorEvidencias.add(ev5);
+        contenedorEvidencias.add(ev6);
+        contenedorEvidencias.add(ev7);
+        contenedorEvidencias.add(ev8);
+        //contenedorEvidencias.add(new JLabel("Probando"));
+
+        repaint();
+        revalidate();
     }
 
     /**
@@ -41,14 +71,17 @@ public class Evidencias extends javax.swing.JFrame {
         alertas = new javax.swing.JLabel();
         panelBotonConfiguracion = new javax.swing.JPanel();
         configuracion = new javax.swing.JLabel();
-        centraConponente = new javax.swing.JPanel();
-        panelSuperior = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        busqueda = new javax.swing.JPanel();
+        barraBusqueda = new javax.swing.JTextField();
         identificacion = new javax.swing.JLabel();
         buscar = new javax.swing.JLabel();
+        submenu = new javax.swing.JPanel();
         aprobadas = new javax.swing.JLabel();
         noAprobadas = new javax.swing.JLabel();
         pendientesAprobacion = new javax.swing.JLabel();
-        barraBusqueda = new javax.swing.JTextField();
+        contenedorEvidencias = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -77,7 +110,7 @@ public class Evidencias extends javax.swing.JFrame {
         menu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menu.setForeground(new java.awt.Color(255, 255, 255));
         menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/Menu_Icon_1.png"))); // NOI18N
+        menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/Menu_Icon_1.png"))); // NOI18N
         menu.setText("Menú");
         menu.setToolTipText("");
         menu.setPreferredSize(null);
@@ -138,7 +171,7 @@ public class Evidencias extends javax.swing.JFrame {
         alertas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         alertas.setForeground(new java.awt.Color(255, 255, 255));
         alertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        alertas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/Feedback_Icon_2.png"))); // NOI18N
+        alertas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/Feedback_Icon_2.png"))); // NOI18N
         alertas.setText("Alertas");
         alertas.setToolTipText("");
         alertas.setMaximumSize(new java.awt.Dimension(70, 30));
@@ -165,7 +198,7 @@ public class Evidencias extends javax.swing.JFrame {
         configuracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         configuracion.setForeground(new java.awt.Color(255, 255, 255));
         configuracion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        configuracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/Settings_Icon_2.png"))); // NOI18N
+        configuracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/Settings_Icon_2.png"))); // NOI18N
         configuracion.setText("Setting");
         configuracion.setToolTipText("");
         configuracion.setAlignmentX(200.0F);
@@ -190,92 +223,21 @@ public class Evidencias extends javax.swing.JFrame {
 
         paneInferior.add(panelMenu, java.awt.BorderLayout.LINE_START);
 
-        panelSuperior.setForeground(new java.awt.Color(60, 63, 65));
-        panelSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setMaximumSize(new java.awt.Dimension(500, 100));
+        jPanel2.setMinimumSize(new java.awt.Dimension(500, 100));
+        jPanel2.setPreferredSize(new java.awt.Dimension(0, 80));
 
-        identificacion.setBackground(new java.awt.Color(255, 255, 255));
-        identificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        identificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha.png"))); // NOI18N
-        identificacion.setText("  ID");
-        identificacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        identificacion.setPreferredSize(new java.awt.Dimension(50, 40));
-        identificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                identificacionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                identificacionMouseExited(evt);
-            }
-        });
-        panelSuperior.add(identificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
-        identificacion.getAccessibleContext().setAccessibleName("");
-
-        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
-        buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buscarMouseExited(evt);
-            }
-        });
-        panelSuperior.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 40, 40));
-
-        aprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        aprobadas.setText("Evidencias aprobadas");
-        aprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        aprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aprobadasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                aprobadasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                aprobadasMouseExited(evt);
-            }
-        });
-        panelSuperior.add(aprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 130, 30));
-
-        noAprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        noAprobadas.setText("Evidencias no aprobadas");
-        noAprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        noAprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                noAprobadasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                noAprobadasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                noAprobadasMouseExited(evt);
-            }
-        });
-        panelSuperior.add(noAprobadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 150, 30));
-
-        pendientesAprobacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pendientesAprobacion.setText("Evidencias pendientes");
-        pendientesAprobacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        pendientesAprobacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pendientesAprobacionMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pendientesAprobacionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pendientesAprobacionMouseExited(evt);
-            }
-        });
-        panelSuperior.add(pendientesAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 130, 30));
+        busqueda.setAlignmentX(0.5F);
+        busqueda.setAlignmentY(0.5F);
+        busqueda.setMaximumSize(new java.awt.Dimension(400, 50));
+        busqueda.setMinimumSize(new java.awt.Dimension(400, 50));
+        busqueda.setPreferredSize(new java.awt.Dimension(700, 40));
+        busqueda.setLayout(new java.awt.BorderLayout());
 
         barraBusqueda.setBackground(new java.awt.Color(214, 214, 214));
         barraBusqueda.setText("Buscar...");
         barraBusqueda.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        barraBusqueda.setPreferredSize(new java.awt.Dimension(64, 28));
         barraBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 barraBusquedaFocusGained(evt);
@@ -300,11 +262,130 @@ public class Evidencias extends javax.swing.JFrame {
                 barraBusquedaKeyPressed(evt);
             }
         });
-        panelSuperior.add(barraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 480, 40));
+        busqueda.add(barraBusqueda, java.awt.BorderLayout.CENTER);
 
-        centraConponente.add(panelSuperior);
+        identificacion.setBackground(new java.awt.Color(255, 255, 255));
+        identificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        identificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha.png"))); // NOI18N
+        identificacion.setText("  ID");
+        identificacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        identificacion.setPreferredSize(new java.awt.Dimension(50, 30));
+        identificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                identificacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                identificacionMouseExited(evt);
+            }
+        });
+        busqueda.add(identificacion, java.awt.BorderLayout.WEST);
+        identificacion.getAccessibleContext().setAccessibleName("");
 
-        paneInferior.add(centraConponente, java.awt.BorderLayout.CENTER);
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        buscar.setPreferredSize(new java.awt.Dimension(50, 40));
+        buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buscarMouseExited(evt);
+            }
+        });
+        busqueda.add(buscar, java.awt.BorderLayout.EAST);
+
+        jPanel2.add(busqueda);
+        busqueda.getAccessibleContext().setAccessibleName("");
+        busqueda.getAccessibleContext().setAccessibleParent(null);
+
+        submenu.setMaximumSize(new java.awt.Dimension(450, 40));
+        submenu.setMinimumSize(new java.awt.Dimension(450, 40));
+        submenu.setName(""); // NOI18N
+        submenu.setPreferredSize(new java.awt.Dimension(1200, 40));
+
+        aprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        aprobadas.setText("Evidencias aprobadas");
+        aprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        aprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aprobadasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                aprobadasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aprobadasMouseExited(evt);
+            }
+        });
+
+        noAprobadas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noAprobadas.setText("Evidencias no aprobadas");
+        noAprobadas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        noAprobadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                noAprobadasMouseExited(evt);
+            }
+        });
+
+        pendientesAprobacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pendientesAprobacion.setText("Evidencias pendientes");
+        pendientesAprobacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        pendientesAprobacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pendientesAprobacionMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout submenuLayout = new javax.swing.GroupLayout(submenu);
+        submenu.setLayout(submenuLayout);
+        submenuLayout.setHorizontalGroup(
+            submenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(aprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(noAprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pendientesAprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        submenuLayout.setVerticalGroup(
+            submenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(submenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noAprobadas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pendientesAprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(submenu);
+        submenu.getAccessibleContext().setAccessibleParent(null);
+
+        contenedorEvidencias.setOpaque(false);
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        contenedorEvidencias.add(jScrollPane1);
+
+        jPanel2.add(contenedorEvidencias);
+
+        paneInferior.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -330,7 +411,7 @@ public class Evidencias extends javax.swing.JFrame {
     private void menuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseExited
         // TODO add your handling code here:
         menu.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-       // menu.setBackground(new Color(33, 150, 243));
+        // menu.setBackground(new Color(33, 150, 243));
     }//GEN-LAST:event_menuMouseExited
 
     private void archivoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archivoMouseEntered
@@ -394,18 +475,18 @@ public class Evidencias extends javax.swing.JFrame {
         alertas.setText("");
         configuracion.setText("");
         menu.setText("");
-        
+
         menu.setBackground(new Color(33, 150, 243));
         archivo.setBackground(new Color(33, 150, 243));
         alertas.setBackground(new Color(33, 150, 243));
         configuracion.setBackground(new Color(33, 150, 243));
         System.out.println("evidencia.Evidencias.menuMouseClicked()");
-        
+
         panelMenu.setPreferredSize(new Dimension(70, 500));
         panelMenu.repaint();
         panelMenu.revalidate();
         restableserMenu(contador);
-      
+
     }//GEN-LAST:event_menuMouseClicked
 
     private void menuComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_menuComponentHidden
@@ -432,7 +513,7 @@ public class Evidencias extends javax.swing.JFrame {
         panelBotonArchivos.repaint();
         panelBotonArchivos.revalidate();
         restableserMenu(contador);
-        
+
     }//GEN-LAST:event_archivoMouseClicked
 
     private void alertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alertasMouseClicked
@@ -447,9 +528,9 @@ public class Evidencias extends javax.swing.JFrame {
         archivo.setBackground(new Color(33, 150, 243));
         alertas.setBackground(new Color(33, 150, 243));
         configuracion.setBackground(new Color(33, 150, 243));
-        
+
         panelMenu.setPreferredSize(new Dimension(70, 500));
-       // alertas.setBackground(new Color(33, 150, 243));
+        // alertas.setBackground(new Color(33, 150, 243));
         panelBotonAlertas.repaint();
         panelBotonAlertas.revalidate();
         restableserMenu(contador);
@@ -466,40 +547,41 @@ public class Evidencias extends javax.swing.JFrame {
         archivo.setBackground(new Color(33, 150, 243));
         alertas.setBackground(new Color(33, 150, 243));
         configuracion.setBackground(new Color(33, 150, 243));
-        
+
         panelMenu.setPreferredSize(new Dimension(70, 500));
         panelBotonConfiguracion.repaint();
         panelBotonConfiguracion.revalidate();
         restableserMenu(contador);
-        
-    }//GEN-LAST:event_configuracionMouseClicked
-     //restaura el panel de menu a las condiciones estandar
-    private void restableserMenu(int con){
-        if(contador==2){
-        archivo.setText("Archivos");
-        alertas.setText("Alertas");
-        configuracion.setText("Setting");
-        menu.setText("Menú");
-        menu.setBackground(new Color(33, 150, 243));
-        archivo.setBackground(new Color(33, 150, 243));
-        alertas.setBackground(new Color(33, 150, 243));
-        configuracion.setBackground(new Color(33, 150, 243));
 
-        panelMenu.setPreferredSize(new Dimension(150, 500));
-        panelMenu.repaint();
-        panelMenu.revalidate();
-        panelBotonArchivos.setPreferredSize(new Dimension(120, 70));
-        panelBotonArchivos.repaint();
-        panelBotonArchivos.revalidate();
-        panelBotonAlertas.setPreferredSize(new Dimension(120, 70));
-        panelBotonAlertas.repaint();
-        panelBotonAlertas.revalidate();
-        panelBotonConfiguracion.setPreferredSize(new Dimension(120, 70));
-        panelBotonConfiguracion.repaint();
-        panelBotonConfiguracion.revalidate();
-        contador=0;
+    }//GEN-LAST:event_configuracionMouseClicked
+    //restaura el panel de menu a las condiciones estandar
+
+    private void restableserMenu(int con) {
+        if (contador == 2) {
+            archivo.setText("Archivos");
+            alertas.setText("Alertas");
+            configuracion.setText("Setting");
+            menu.setText("Menú");
+            menu.setBackground(new Color(33, 150, 243));
+            archivo.setBackground(new Color(33, 150, 243));
+            alertas.setBackground(new Color(33, 150, 243));
+            configuracion.setBackground(new Color(33, 150, 243));
+
+            panelMenu.setPreferredSize(new Dimension(150, 500));
+            panelMenu.repaint();
+            panelMenu.revalidate();
+            panelBotonArchivos.setPreferredSize(new Dimension(120, 70));
+            panelBotonArchivos.repaint();
+            panelBotonArchivos.revalidate();
+            panelBotonAlertas.setPreferredSize(new Dimension(120, 70));
+            panelBotonAlertas.repaint();
+            panelBotonAlertas.revalidate();
+            panelBotonConfiguracion.setPreferredSize(new Dimension(120, 70));
+            panelBotonConfiguracion.repaint();
+            panelBotonConfiguracion.revalidate();
+            contador = 0;
         }
-}
+    }
     private void menuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_menuFocusLost
         // TODO add your handling code here: 
     }//GEN-LAST:event_menuFocusLost
@@ -511,40 +593,40 @@ public class Evidencias extends javax.swing.JFrame {
 
     private void barraBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraBusquedaMouseExited
         // TODO add your handling code here:
-            barraBusqueda.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        barraBusqueda.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     }//GEN-LAST:event_barraBusquedaMouseExited
 
     private void panelBotonMenuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelBotonMenuFocusLost
-    
+
     }//GEN-LAST:event_panelBotonMenuFocusLost
 
     private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
-      
-       if(barraBusqueda.getText().equals("")){
-        barraBusqueda.setText("Buscar...");
-        //System.out.println("basio");
-        }else{
-            if(buscando !="") barraBusqueda.setText(buscando);
-              buscando = barraBusqueda.getText();
-              System.out.println(buscando);
-             //System.out.println("entrando en el esle");
-             buscando ="";
+
+        if (barraBusqueda.getText().equals("")) {
+            barraBusqueda.setText("Buscar...");
+            //System.out.println("basio");
+        } else {
+            if (buscando != "") {
+                barraBusqueda.setText(buscando);
+            }
+            buscando = barraBusqueda.getText();
+            System.out.println(buscando);
+            //System.out.println("entrando en el esle");
+            buscando = "";
         }
     }//GEN-LAST:event_buscarMouseClicked
 
     private void barraBusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_barraBusquedaFocusGained
         barraBusqueda.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-   
-        
-        
+
     }//GEN-LAST:event_barraBusquedaFocusGained
 
     private void barraBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_barraBusquedaFocusLost
         // TODO add your handling code here:
-        if(barraBusqueda.equals("Buscar")|| barraBusqueda.equals("")){
-          barraBusqueda.setText("Buscar...");
+        if (barraBusqueda.equals("Buscar") || barraBusqueda.equals("")) {
+            barraBusqueda.setText("Buscar...");
         }
-        
+
     }//GEN-LAST:event_barraBusquedaFocusLost
 
     private void barraBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraBusquedaMouseClicked
@@ -554,32 +636,32 @@ public class Evidencias extends javax.swing.JFrame {
 
     private void barraBusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_barraBusquedaKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()==10){
+        if (evt.getKeyCode() == 10) {
             System.out.println("Enter funcionando");
         }
     }//GEN-LAST:event_barraBusquedaKeyPressed
 
     private void aprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseExited
-               aprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        aprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     }//GEN-LAST:event_aprobadasMouseExited
 
     private void aprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseEntered
         // TODO add your handling code here:
-          aprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
-          
+        aprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
     }//GEN-LAST:event_aprobadasMouseEntered
 
     private void aprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseClicked
         // TODO add your handling code here:
         aprobadas.setOpaque(true);
         aprobadas.setBackground(new Color(33, 150, 243));
-         pendientesAprobacion.setBackground(new Color(214,214,214));
-        noAprobadas.setBackground(new Color(214,214,214));
+        pendientesAprobacion.setBackground(new Color(214, 214, 214));
+        noAprobadas.setBackground(new Color(214, 214, 214));
     }//GEN-LAST:event_aprobadasMouseClicked
 
     private void noAprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseEntered
         // TODO add your handling code here:
-         noAprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        noAprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_noAprobadasMouseEntered
 
     private void noAprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseExited
@@ -590,9 +672,9 @@ public class Evidencias extends javax.swing.JFrame {
     private void noAprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseClicked
         // TODO add your handling code here:
         noAprobadas.setOpaque(true);
-        aprobadas.setBackground(new Color(214,214,214));
+        aprobadas.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(33, 150, 243));
-        pendientesAprobacion.setBackground(new Color(214,214,214));
+        pendientesAprobacion.setBackground(new Color(214, 214, 214));
     }//GEN-LAST:event_noAprobadasMouseClicked
 
     private void pendientesAprobacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseEntered
@@ -609,12 +691,11 @@ public class Evidencias extends javax.swing.JFrame {
         // TODO add your handling code here:
         pendientesAprobacion.setOpaque(true);
         pendientesAprobacion.setBackground(new Color(33, 150, 243));
-        aprobadas.setBackground(new Color(214,214,214));
-        noAprobadas.setBackground(new Color(214,214,214));
-        
+        aprobadas.setBackground(new Color(214, 214, 214));
+        noAprobadas.setBackground(new Color(214, 214, 214));
+
     }//GEN-LAST:event_pendientesAprobacionMouseClicked
 
-    
     /**
      * @param args the command line arguments
      */
@@ -650,18 +731,21 @@ public class Evidencias extends javax.swing.JFrame {
             }
         });
     }
-  private static int contador=0;
-  private String buscando ="";
-  private ManejadorEvidencia componente;
+    private static int contador = 0;
+    private String buscando = "";
+    private ManejadorEvidencia componente;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertas;
     private javax.swing.JLabel aprobadas;
     private javax.swing.JLabel archivo;
     private javax.swing.JTextField barraBusqueda;
     private javax.swing.JLabel buscar;
-    private javax.swing.JPanel centraConponente;
+    private javax.swing.JPanel busqueda;
     private javax.swing.JLabel configuracion;
+    private javax.swing.JPanel contenedorEvidencias;
     private javax.swing.JLabel identificacion;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel menu;
     private javax.swing.JLabel noAprobadas;
     private javax.swing.JPanel paneInferior;
@@ -670,7 +754,7 @@ public class Evidencias extends javax.swing.JFrame {
     private javax.swing.JPanel panelBotonConfiguracion;
     private javax.swing.JPanel panelBotonMenu;
     private javax.swing.JPanel panelMenu;
-    private javax.swing.JPanel panelSuperior;
     private javax.swing.JLabel pendientesAprobacion;
+    private javax.swing.JPanel submenu;
     // End of variables declaration//GEN-END:variables
 }

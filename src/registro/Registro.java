@@ -559,16 +559,17 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseñaMouseClicked
 
     private void verificarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarContraseñaFocusLost
-        String password2 = new String(contraseña.getPassword());
+        String password2 = new String( verificarContraseña.getPassword());
         if (password2.equals(password)&& !password2.equals("")) {
             verificarContraseña.setBorder(bordeAzul);
             System.out.println(password2);
+            System.out.println(password);
         } else {
            // JOptionPane.showMessageDialog(this, "Contaseña invalida");
-          // if(password2.equals()){
+        // if(password2.equals()){
             verificarContraseña.setBorder(bordeRojo);
             verificarContraseña.setText("password: *******");
-          // }
+        //}
         }
     }//GEN-LAST:event_verificarContraseñaFocusLost
 
