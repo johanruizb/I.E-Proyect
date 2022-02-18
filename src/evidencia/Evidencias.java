@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -27,25 +28,45 @@ public class Evidencias extends javax.swing.JFrame {
     }
 
     private void addComponent() {
-
+        scroll = new JScrollPane();
         System.out.println("Agregando...");
-        contenedorEvidencias.setLayout(new GridLayout(8, 0, 20, 2));
+        //contenedorEvidencias.setLayout(new GridLayout(8, 0, 20, 2));
         ManejadorEvidencia ev1 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev2 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "rechachado", "RECHAZADA");
-        ManejadorEvidencia ev3 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
-        ManejadorEvidencia ev4 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
+        ManejadorEvidencia ev2 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ","Rechazado", "RECHAZADA");
+        ManejadorEvidencia ev3 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev4 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
         ManejadorEvidencia ev5 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
         ManejadorEvidencia ev6 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev7 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "rechazado", "RECHAZADA");
-        ManejadorEvidencia ev8 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "en proceso", "EN-ESPERA");
-        contenedorEvidencias.add(ev1);
-        contenedorEvidencias.add(ev2);
-        contenedorEvidencias.add(ev3);
-        contenedorEvidencias.add(ev4);
-        contenedorEvidencias.add(ev5);
-        contenedorEvidencias.add(ev6);
-        contenedorEvidencias.add(ev7);
-        contenedorEvidencias.add(ev8);
+        ManejadorEvidencia ev7 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        ManejadorEvidencia ev8 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev9 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev10 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechachado", "RECHAZADA");
+        ManejadorEvidencia ev11 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev12 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev13 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
+        ManejadorEvidencia ev14 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev15 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        ManejadorEvidencia ev16 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
+        //contenedorEvidencias.add( boxPanel);
+        boxPanel.add(ev1);
+        boxPanel.add(ev2);
+        boxPanel.add(ev3);
+        boxPanel.add(ev4);
+        boxPanel.add(ev5);
+        boxPanel.add(ev6);
+        boxPanel.add(ev7);
+        boxPanel.add(ev8);
+        boxPanel.add(ev9);
+        boxPanel.add(ev10);
+        boxPanel.add(ev11);
+        boxPanel.add(ev12);
+        boxPanel.add(ev13);
+        boxPanel.add(ev14);
+        boxPanel.add(ev15);
+        boxPanel.add(ev16);
+        scroll.add(boxPanel);
+        contenedorEvidencias.add(boxPanel);
         //contenedorEvidencias.add(new JLabel("Probando"));
 
         repaint();
@@ -81,7 +102,7 @@ public class Evidencias extends javax.swing.JFrame {
         noAprobadas = new javax.swing.JLabel();
         pendientesAprobacion = new javax.swing.JLabel();
         contenedorEvidencias = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        boxPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -227,8 +248,6 @@ public class Evidencias extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(500, 100));
         jPanel2.setPreferredSize(new java.awt.Dimension(0, 80));
 
-        busqueda.setAlignmentX(0.5F);
-        busqueda.setAlignmentY(0.5F);
         busqueda.setMaximumSize(new java.awt.Dimension(400, 50));
         busqueda.setMinimumSize(new java.awt.Dimension(400, 50));
         busqueda.setPreferredSize(new java.awt.Dimension(700, 40));
@@ -299,7 +318,6 @@ public class Evidencias extends javax.swing.JFrame {
 
         jPanel2.add(busqueda);
         busqueda.getAccessibleContext().setAccessibleName("");
-        busqueda.getAccessibleContext().setAccessibleParent(null);
 
         submenu.setMaximumSize(new java.awt.Dimension(450, 40));
         submenu.setMinimumSize(new java.awt.Dimension(450, 40));
@@ -376,14 +394,22 @@ public class Evidencias extends javax.swing.JFrame {
         );
 
         jPanel2.add(submenu);
-        submenu.getAccessibleContext().setAccessibleParent(null);
 
         contenedorEvidencias.setOpaque(false);
-
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        contenedorEvidencias.add(jScrollPane1);
-
         jPanel2.add(contenedorEvidencias);
+
+        javax.swing.GroupLayout boxPanelLayout = new javax.swing.GroupLayout(boxPanel);
+        boxPanel.setLayout(boxPanelLayout);
+        boxPanelLayout.setHorizontalGroup(
+            boxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        boxPanelLayout.setVerticalGroup(
+            boxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(boxPanel);
 
         paneInferior.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -391,7 +417,7 @@ public class Evidencias extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paneInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(paneInferior, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -651,12 +677,18 @@ public class Evidencias extends javax.swing.JFrame {
 
     }//GEN-LAST:event_aprobadasMouseEntered
 
+
     private void aprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseClicked
         // TODO add your handling code here:
         aprobadas.setOpaque(true);
         aprobadas.setBackground(new Color(33, 150, 243));
         pendientesAprobacion.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(214, 214, 214));
+        //incorporando evidencia la sub menú
+        // if(componente.getEstado().equals("APRODADO")){
+
+        // }
+
     }//GEN-LAST:event_aprobadasMouseClicked
 
     private void noAprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseEntered
@@ -734,18 +766,19 @@ public class Evidencias extends javax.swing.JFrame {
     private static int contador = 0;
     private String buscando = "";
     private ManejadorEvidencia componente;
+    private JScrollPane scroll;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertas;
     private javax.swing.JLabel aprobadas;
     private javax.swing.JLabel archivo;
     private javax.swing.JTextField barraBusqueda;
+    private javax.swing.JPanel boxPanel;
     private javax.swing.JLabel buscar;
     private javax.swing.JPanel busqueda;
     private javax.swing.JLabel configuracion;
     private javax.swing.JPanel contenedorEvidencias;
     private javax.swing.JLabel identificacion;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel menu;
     private javax.swing.JLabel noAprobadas;
     private javax.swing.JPanel paneInferior;

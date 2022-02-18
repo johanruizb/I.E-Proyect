@@ -29,8 +29,8 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
     private String estado, numerReferencia;
     private ImageIcon separa = new ImageIcon("src/imagenes2/espaciador.png");
     private ImageIcon separa2 = new ImageIcon("src/imagenes2/separa50.png");//13, 71, 161//13, 71, 161
-    private Border borde = BorderFactory.createBevelBorder(0, (new Color(214,214,214)), new Color(60,63,65));
-
+    //private Border borde = BorderFactory.createBevelBorder(0, (new Color(214,214,214)), new Color(60,63,65));
+      private Border borde = BorderFactory.createLineBorder(new Color(204,204,204),2, true);
     public ManejadorEvidencia(String id, String referencia, String fecha, String descripcion, String estado) {
 
         //this.numerReferencia = referencia;
@@ -48,16 +48,17 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
         if (estado.equals("EN-ESPERA")) {
             this.icono = new JLabel(new ImageIcon("src/imagenes2/en-aprobacion.png"));
         } else if (estado.equals("APROBADO")) {
-            System.out.println("validando aprobado");
+           // System.out.println("validando aprobado");
             this.icono = new JLabel(new ImageIcon("src/imagenes2/aprobada.png"));
         } else if (estado.equals("RECHAZADA")) {
-            this.icono = new JLabel(new ImageIcon("src/magenes2/rechazada.png"));
+            this.icono = new JLabel(new ImageIcon("src/imagenes2/rechazada.png"));//src/magenes2/rechazada.png
         } else {
             this.icono = new JLabel(new ImageIcon("imagen/default.png"));
+             System.out.println("validando aprobado");
         }
         JLabel n = new JLabel(separa);
         this.setBorder(borde);
-        this.setBackground(new Color(138,172,200));
+        this.setBackground(new Color(238,238,238));
         this.setLayout(new FlowLayout());
         this.setSize(700, 30);
         //agregando componnetes
