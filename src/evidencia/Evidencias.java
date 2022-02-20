@@ -25,60 +25,48 @@ public class Evidencias extends javax.swing.JFrame {
     public Evidencias() {
         initComponents();
         addComponent();
+        
     }
 
     private void addComponent() {
         // scroll = new JScrollPane();
         System.out.println("Agregando...");
         //contenedorEvidencias.setLayout(new GridLayout(8, 0, 20, 2));
-        ManejadorEvidencia ev1 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev2 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-        ManejadorEvidencia ev3 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev4 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev5 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
-        ManejadorEvidencia ev6 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev7 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-        ManejadorEvidencia ev8 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev9 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev10 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechachado", "RECHAZADA");
-        ManejadorEvidencia ev11 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev12 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev13 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
-        ManejadorEvidencia ev14 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev15 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-        ManejadorEvidencia ev16 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev17 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechachado", "RECHAZADA");
-        ManejadorEvidencia ev18 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev19 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
-        ManejadorEvidencia ev20 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
-        ManejadorEvidencia ev21 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
-        ManejadorEvidencia ev22 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-        ManejadorEvidencia ev23 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev1 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev2 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        ManejadorEvidencia ev3 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev4 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev5 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
+        ManejadorEvidencia ev6 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        ManejadorEvidencia ev7 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        ManejadorEvidencia ev8 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        ManejadorEvidencia ev9 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        // ManejadorEvidencia ev10 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechachado", "RECHAZADA");
+        // ManejadorEvidencia ev11 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        // ManejadorEvidencia ev12 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        // ManejadorEvidencia ev13 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
+        //  ManejadorEvidencia ev14 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        // ManejadorEvidencia ev15 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        //  ManejadorEvidencia ev16 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        //  ManejadorEvidencia ev17 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechachado", "RECHAZADA");
+        // ManejadorEvidencia ev18 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        //  ManejadorEvidencia ev19 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
+        //  ManejadorEvidencia ev20 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "EN-ESPERA");
+        // ManejadorEvidencia ev21 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
+        // ManejadorEvidencia ev22 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        // ManejadorEvidencia ev23 = new ManejadorEvidencia(" ID : ", "19082236 ", " 17/02/2022 ", "En proceso", "EN-ESPERA");
         // boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
         //contenedorEvidencias.add( boxPanel);
-     
-         boxPanel.add(ev2);
-         boxPanel.add(ev3);
+
+        boxPanel.add(ev1);
+        boxPanel.add(ev2);
+        boxPanel.add(ev3);
         boxPanel.add(ev4);
-         boxPanel.add(ev5);
-         boxPanel.add(ev6);
+        boxPanel.add(ev5);
+        boxPanel.add(ev6);
         boxPanel.add(ev7);
         boxPanel.add(ev8);
         boxPanel.add(ev9);
-        boxPanel.add(ev10);
-        boxPanel.add(ev11);
-        boxPanel.add(ev12);
-        boxPanel.add(ev13);
-        boxPanel.add(ev14);
-        boxPanel.add(ev15);
-        boxPanel.add(ev16);
-        boxPanel.add(ev17);
-        boxPanel.add(ev18);
-        boxPanel.add(ev19);
-        boxPanel.add(ev20);
-        boxPanel.add(ev21);
-        boxPanel.add(ev22);
-        boxPanel.add(ev23);
         //scroll.add(boxPanel);
         //contenedorEvidencias.add(boxPanel);
         //contenedorEvidencias.add(new JLabel("Probando"));
@@ -117,7 +105,7 @@ public class Evidencias extends javax.swing.JFrame {
         contPanel = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         boxPanel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        crearEvidencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -424,12 +412,20 @@ public class Evidencias extends javax.swing.JFrame {
         boxPanel.setLayout(new javax.swing.BoxLayout(boxPanel, javax.swing.BoxLayout.Y_AXIS));
         scroll.setViewportView(boxPanel);
 
-        jButton2.setBackground(new java.awt.Color(33, 150, 243));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/add.png"))); // NOI18N
-        jButton2.setText("Crear evidencia ");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        crearEvidencia.setBackground(new java.awt.Color(33, 150, 243));
+        crearEvidencia.setForeground(new java.awt.Color(255, 255, 255));
+        crearEvidencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/add.png"))); // NOI18N
+        crearEvidencia.setText("Crear evidencia ");
+        crearEvidencia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearEvidencia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        crearEvidencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearEvidenciaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearEvidenciaMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout contPanelLayout = new javax.swing.GroupLayout(contPanel);
         contPanel.setLayout(contPanelLayout);
@@ -441,14 +437,14 @@ public class Evidencias extends javax.swing.JFrame {
                     .addComponent(scroll)
                     .addGroup(contPanelLayout.createSequentialGroup()
                         .addGap(0, 563, Short.MAX_VALUE)
-                        .addComponent(jButton2))))
+                        .addComponent(crearEvidencia))))
         );
         contPanelLayout.setVerticalGroup(
             contPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contPanelLayout.createSequentialGroup()
                 .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(crearEvidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 590, Short.MAX_VALUE))
         );
 
@@ -651,6 +647,22 @@ public class Evidencias extends javax.swing.JFrame {
             contador = 0;
         }
     }
+
+    private void creaEvidencia(String referencia, String fecha, String descripcion, String estado) {
+        String id = "ID:";
+        manejador = new ManejadorEvidencia(estado);
+        
+        //if (manejador.getEstado().equals("APROBADA")) {
+            ManejadorEvidencia evi = new ManejadorEvidencia(referencia, fecha, descripcion, estado);
+            System.out.println("eNTRE A CREAR EVIDENCIA");
+            //boxPanel.removeAll();
+                boxPanel.add(evi);
+                
+                boxPanel.revalidate();
+                boxPanel.repaint();
+            
+        //}
+    }
     private void menuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_menuFocusLost
         // TODO add your handling code here: 
     }//GEN-LAST:event_menuFocusLost
@@ -728,9 +740,16 @@ public class Evidencias extends javax.swing.JFrame {
         pendientesAprobacion.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(214, 214, 214));
         //incorporando evidencia la sub menú
-        // if(componente.getEstado().equals("APRODADO")){
-
-        // }
+        manejador =new ManejadorEvidencia("APROBADA");
+         //if(manejador.getEstado().equals("APROBADA")){
+             System.out.println("Funcionando");
+            // System.out.println("Selecionaste no aprobadas");
+            System.out.println(manejador.getEstado());
+            creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "APROBADA");
+           
+            repaint();
+            revalidate();
+         //}
 
     }//GEN-LAST:event_aprobadasMouseClicked
 
@@ -746,10 +765,20 @@ public class Evidencias extends javax.swing.JFrame {
 
     private void noAprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseClicked
         // TODO add your handling code here:
+        // System.out.println("Selecionaste no aprobadas");
         noAprobadas.setOpaque(true);
         aprobadas.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(33, 150, 243));
         pendientesAprobacion.setBackground(new Color(214, 214, 214));
+        
+        //if(manejador.getEstado().equals("RECHAZADA")){
+        //    System.out.println("Selecionaste no aprobadas");
+            //System.out.println(manejador.getDescripcion());
+          //creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+           // repaint();
+           // revalidate();
+            
+        //}
     }//GEN-LAST:event_noAprobadasMouseClicked
 
     private void pendientesAprobacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseEntered
@@ -770,6 +799,18 @@ public class Evidencias extends javax.swing.JFrame {
         noAprobadas.setBackground(new Color(214, 214, 214));
 
     }//GEN-LAST:event_pendientesAprobacionMouseClicked
+
+    private void crearEvidenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearEvidenciaMouseEntered
+        // TODO add your handling code here:
+        crearEvidencia.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        crearEvidencia.setBackground(new Color(171, 71, 188));
+    }//GEN-LAST:event_crearEvidenciaMouseEntered
+
+    private void crearEvidenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearEvidenciaMouseExited
+        // TODO add your handling code here:
+        crearEvidencia.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+        crearEvidencia.setBackground(new Color(33, 150, 243));
+    }//GEN-LAST:event_crearEvidenciaMouseExited
 
     /**
      * @param args the command line arguments
@@ -809,6 +850,7 @@ public class Evidencias extends javax.swing.JFrame {
     private static int contador = 0;
     private String buscando = "";
     private ManejadorEvidencia componente;
+    private ManejadorEvidencia manejador;
     //private JScrollPane scroll;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alertas;
@@ -820,8 +862,8 @@ public class Evidencias extends javax.swing.JFrame {
     private javax.swing.JPanel busqueda;
     private javax.swing.JLabel configuracion;
     private javax.swing.JPanel contPanel;
+    private javax.swing.JButton crearEvidencia;
     private javax.swing.JLabel identificacion;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel menu;
     private javax.swing.JLabel noAprobadas;
