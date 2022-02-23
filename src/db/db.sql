@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS informacion_Locacion(
 
 CREATE TABLE IF NOT EXISTS dummy(
 	serial_info serial,
-	cedula VARCHAR(255) NOT NULL PRIMARY KEY,
+	cedula VARCHAR(255) NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE IF NOT EXISTS registro_evidencias(
