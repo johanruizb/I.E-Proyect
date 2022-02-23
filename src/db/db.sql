@@ -47,14 +47,14 @@ CREATE TABLE IF NOT EXISTS registro_detalles(
 INSERT INTO
 	informacion_Personal(numeroCedula, nombre, apellido1, apellido2)
 VALUES
-	('1000000', 'Juan', 'Perez', 'NONE');
+	('1000001', 'Juan', 'Perez', 'NONE');
 
 INSERT INTO
 	informacion_Acceso(numeroCedula_FK, email, contraseña)
 VALUES
-	('1000000', 'juan@gmail.com', 'juan123');
+	('1000001', 'juan@gmail.com', 'juan123');
 
 INSERT INTO
 	informacion_Locacion(numeroCedula_FK, ciudad, empresa, localidad)
 VALUES
-	('1000000', 'Cali', 'Inspecta', 'El Troncal');
+	('1000001', 'Cali', 'Inspecta', 'El Troncal');
