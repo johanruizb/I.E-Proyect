@@ -35,14 +35,7 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
     private Border borde = BorderFactory.createLineBorder(new Color(204, 204, 204), 2, true);
 
     public ManejadorEvidencia(String referencia, String fecha, String descripcion, String estado) {
-        //this.idEvidencia = id;
-        //this.numeroReferencia = referencia;
-        //this.fecha = fecha;
-        //this.descripcion = descripcion;
-        //this.estado = estado;
-        //this.carpetaIcono = new JLabel(" ID:", new ImageIcon("src/imagenes2/folder.png"), SwingConstants.CENTER);
-        //this.iden = new JLabel(id,SwingConstants.CENTER);
-        // this.reference = new JLabel(referencia, SwingConstants.LEFT);
+      
         this.identificador = new JLabel(referencia, carpeta, JLabel.LEFT);
         this.fechaEvidencia = new JLabel(fecha, JLabel.LEFT);
         this.estado = new JLabel(descripcion, JLabel.LEFT);
