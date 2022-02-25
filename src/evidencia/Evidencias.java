@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
@@ -25,11 +26,13 @@ public class Evidencias extends javax.swing.JFrame {
     public Evidencias() {
         initComponents();
         addComponent();
-        
     }
 
     private void addComponent() {
         // scroll = new JScrollPane();
+        //JPanel boxPanel = new JPanel();
+       // boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.PAGE_AXIS));
+        //boxPanel.setPreferredSize(new Dimension(500, 1000));
         System.out.println("Agregando...");
         //contenedorEvidencias.setLayout(new GridLayout(8, 0, 20, 2));
         ManejadorEvidencia ev1 = new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO");
@@ -70,6 +73,8 @@ public class Evidencias extends javax.swing.JFrame {
         //scroll.add(boxPanel);
         //contenedorEvidencias.add(boxPanel);
         //contenedorEvidencias.add(new JLabel("Probando"));
+
+        contPanel.add(boxPanel);
         repaint();
         revalidate();
     }
@@ -651,16 +656,15 @@ public class Evidencias extends javax.swing.JFrame {
     private void creaEvidencia(String referencia, String fecha, String descripcion, String estado) {
         String id = "ID:";
         manejador = new ManejadorEvidencia(estado);
-        
-        //if (manejador.getEstado().equals("APROBADA")) {
-            ManejadorEvidencia evi = new ManejadorEvidencia(referencia, fecha, descripcion, estado);
-            System.out.println("eNTRE A CREAR EVIDENCIA");
-            //boxPanel.removeAll();
-                boxPanel.add(evi);
-                
-                boxPanel.revalidate();
-                boxPanel.repaint();
-            
+
+        // if (manejador.getEstado().equals("APROBADA")) {
+        ManejadorEvidencia evi = new ManejadorEvidencia(referencia, fecha, descripcion, estado);
+        System.out.println("eNTRE A CREAR EVIDENCIA");
+        //boxPanel.removeAll();
+//        boxPanel.add(evi);
+
+        //      boxPanel.revalidate();
+        //    boxPanel.repaint();
         //}
     }
     private void menuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_menuFocusLost
@@ -740,16 +744,16 @@ public class Evidencias extends javax.swing.JFrame {
         pendientesAprobacion.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(214, 214, 214));
         //incorporando evidencia la sub menú
-        manejador =new ManejadorEvidencia("APROBADA");
-         //if(manejador.getEstado().equals("APROBADA")){
-             System.out.println("Funcionando");
-            // System.out.println("Selecionaste no aprobadas");
-            System.out.println(manejador.getEstado());
-            creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "APROBADA");
-           
-            repaint();
-            revalidate();
-         //}
+        manejador = new ManejadorEvidencia("APROBADA");
+        //if(manejador.getEstado().equals("APROBADA")){
+        System.out.println("Funcionando");
+        // System.out.println("Selecionaste no aprobadas");
+        System.out.println(manejador.getEstado());
+        creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "APROBADA");
+
+        repaint();
+        revalidate();
+        //}
 
     }//GEN-LAST:event_aprobadasMouseClicked
 
@@ -770,14 +774,13 @@ public class Evidencias extends javax.swing.JFrame {
         aprobadas.setBackground(new Color(214, 214, 214));
         noAprobadas.setBackground(new Color(33, 150, 243));
         pendientesAprobacion.setBackground(new Color(214, 214, 214));
-        
+
         //if(manejador.getEstado().equals("RECHAZADA")){
         //    System.out.println("Selecionaste no aprobadas");
-            //System.out.println(manejador.getDescripcion());
-          //creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-           // repaint();
-           // revalidate();
-            
+        //System.out.println(manejador.getDescripcion());
+        //creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
+        // repaint();
+        // revalidate();
         //}
     }//GEN-LAST:event_noAprobadasMouseClicked
 

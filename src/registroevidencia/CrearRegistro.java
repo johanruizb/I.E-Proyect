@@ -25,46 +25,180 @@ public class CrearRegistro extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        jButton6 = new javax.swing.JButton();
+        backPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        contenedorComponentes = new javax.swing.JPanel();
+        idEvidencia = new javax.swing.JTextField();
+        referenciaEvidencia = new javax.swing.JTextField();
+        aprobado = new javax.swing.JButton();
+        noAprobado = new javax.swing.JButton();
+        selecinarFecha = new javax.swing.JTextField();
+        tipoTrabajo = new javax.swing.JTextField();
+        ciudadOperacion = new javax.swing.JTextField();
+        fechaRegistroInformacion = new javax.swing.JTextField();
+        botonAprobada = new javax.swing.JButton();
+        noAprobada = new javax.swing.JButton();
+        scroll = new javax.swing.JScrollPane();
+        observaciones = new javax.swing.JTextArea();
+
+        jButton6.setText("jButton6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+        contenedorComponentes.setMinimumSize(new java.awt.Dimension(500, 500));
+        contenedorComponentes.setPreferredSize(new java.awt.Dimension(500, 500));
+        java.awt.GridBagLayout contenedorComponentesLayout = new java.awt.GridBagLayout();
+        contenedorComponentesLayout.columnWidths = new int[] {0, 100, 0, 100, 0, 100, 0, 100, 0};
+        contenedorComponentesLayout.rowHeights = new int[] {0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0, 16, 0};
+        contenedorComponentes.setLayout(contenedorComponentesLayout);
 
-        jPanel2.setLayout(new java.awt.GridLayout(3, 1));
+        idEvidencia.setColumns(30);
+        idEvidencia.setText("ID: numero contrato");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        contenedorComponentes.add(idEvidencia, gridBagConstraints);
 
-        jTextField1.setText("jTextField1");
-        jPanel2.add(jTextField1);
+        referenciaEvidencia.setColumns(30);
+        referenciaEvidencia.setText("Rf: numero referencia");
+        referenciaEvidencia.setMinimumSize(new java.awt.Dimension(700, 50));
+        referenciaEvidencia.setName(""); // NOI18N
+        referenciaEvidencia.setPreferredSize(new java.awt.Dimension(700, 50));
+        referenciaEvidencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                referenciaEvidenciaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        contenedorComponentes.add(referenciaEvidencia, gridBagConstraints);
 
-        jTextField2.setText("jTextField2");
-        jPanel2.add(jTextField2);
+        aprobado.setText("Registro Aprobado");
+        aprobado.setMaximumSize(new java.awt.Dimension(150, 50));
+        aprobado.setMinimumSize(new java.awt.Dimension(150, 50));
+        aprobado.setName(""); // NOI18N
+        aprobado.setPreferredSize(new java.awt.Dimension(150, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        contenedorComponentes.add(aprobado, gridBagConstraints);
 
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        noAprobado.setText("Registro no aprobado");
+        noAprobado.setMaximumSize(new java.awt.Dimension(150, 50));
+        noAprobado.setMinimumSize(new java.awt.Dimension(150, 50));
+        noAprobado.setPreferredSize(new java.awt.Dimension(150, 50));
+        noAprobado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noAprobadoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(noAprobado, gridBagConstraints);
 
-        jButton1.setText("jButton1");
-        jPanel3.add(jButton1, new java.awt.GridBagConstraints());
+        selecinarFecha.setText("Seleccionar fecha ejecucion");
+        selecinarFecha.setMaximumSize(new java.awt.Dimension(700, 50));
+        selecinarFecha.setMinimumSize(new java.awt.Dimension(700, 50));
+        selecinarFecha.setPreferredSize(new java.awt.Dimension(700, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(selecinarFecha, gridBagConstraints);
 
-        jButton2.setText("jButton2");
-        jPanel3.add(jButton2, new java.awt.GridBagConstraints());
+        tipoTrabajo.setText("Seleccion tipo de trabajo");
+        tipoTrabajo.setMaximumSize(new java.awt.Dimension(700, 50));
+        tipoTrabajo.setMinimumSize(new java.awt.Dimension(700, 50));
+        tipoTrabajo.setPreferredSize(new java.awt.Dimension(700, 50));
+        tipoTrabajo.setSelectionEnd(27);
+        tipoTrabajo.setSelectionStart(27);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(tipoTrabajo, gridBagConstraints);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ciudadOperacion.setText("Cali, valle");
+        ciudadOperacion.setMaximumSize(new java.awt.Dimension(700, 50));
+        ciudadOperacion.setMinimumSize(new java.awt.Dimension(700, 50));
+        ciudadOperacion.setPreferredSize(new java.awt.Dimension(700, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(ciudadOperacion, gridBagConstraints);
 
-        jPanel3.add(jScrollPane1, new java.awt.GridBagConstraints());
+        fechaRegistroInformacion.setText("25/30/2026");
+        fechaRegistroInformacion.setMaximumSize(new java.awt.Dimension(700, 50));
+        fechaRegistroInformacion.setMinimumSize(new java.awt.Dimension(700, 50));
+        fechaRegistroInformacion.setPreferredSize(new java.awt.Dimension(700, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(fechaRegistroInformacion, gridBagConstraints);
 
-        jPanel2.add(jPanel3);
+        botonAprobada.setText("Aprobada");
+        botonAprobada.setMaximumSize(new java.awt.Dimension(150, 50));
+        botonAprobada.setMinimumSize(new java.awt.Dimension(150, 50));
+        botonAprobada.setPreferredSize(new java.awt.Dimension(150, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(botonAprobada, gridBagConstraints);
 
-        jPanel1.add(jPanel2);
+        noAprobada.setText("No aprobada");
+        noAprobada.setMaximumSize(new java.awt.Dimension(150, 50));
+        noAprobada.setMinimumSize(new java.awt.Dimension(150, 50));
+        noAprobada.setOpaque(true);
+        noAprobada.setPreferredSize(new java.awt.Dimension(150, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        contenedorComponentes.add(noAprobada, gridBagConstraints);
+
+        scroll.setPreferredSize(new java.awt.Dimension(574, 500));
+
+        observaciones.setColumns(50);
+        observaciones.setRows(10);
+        observaciones.setTabSize(10);
+        observaciones.setText("Esta es el area de observaciones del componenete");
+        observaciones.setMinimumSize(new java.awt.Dimension(275, 200));
+        observaciones.setPreferredSize(new java.awt.Dimension(500, 500));
+        observaciones.setSelectionEnd(100);
+        observaciones.setSelectionStart(100);
+        scroll.setViewportView(observaciones);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        contenedorComponentes.add(scroll, gridBagConstraints);
+
+        jPanel1.add(contenedorComponentes);
+
+        backPanel.add(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,15 +206,23 @@ public class CrearRegistro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(backPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void noAprobadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noAprobadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noAprobadoActionPerformed
+
+    private void referenciaEvidenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenciaEvidenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_referenciaEvidenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,14 +260,21 @@ public class CrearRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton aprobado;
+    private javax.swing.JPanel backPanel;
+    private javax.swing.JButton botonAprobada;
+    private javax.swing.JTextField ciudadOperacion;
+    private javax.swing.JPanel contenedorComponentes;
+    private javax.swing.JTextField fechaRegistroInformacion;
+    private javax.swing.JTextField idEvidencia;
+    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton noAprobada;
+    private javax.swing.JButton noAprobado;
+    private javax.swing.JTextArea observaciones;
+    private javax.swing.JTextField referenciaEvidencia;
+    private javax.swing.JScrollPane scroll;
+    private javax.swing.JTextField selecinarFecha;
+    private javax.swing.JTextField tipoTrabajo;
     // End of variables declaration//GEN-END:variables
 }
