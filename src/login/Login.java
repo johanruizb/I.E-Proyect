@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setPreferredSize(new java.awt.Dimension(869, 500));
         bg.setLayout(new javax.swing.BoxLayout(bg, javax.swing.BoxLayout.LINE_AXIS));
-        bg.setSize(new Dimension(501,288));
+        bg.setSize(new Dimension(501, 288));
 
         panel.setPreferredSize(new java.awt.Dimension(235, 375));
         panel.setLayout(new java.awt.GridBagLayout());
@@ -148,9 +148,11 @@ public class Login extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registroMouseClicked(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 registroMouseExited(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registroMouseEntered(evt);
             }
@@ -167,12 +169,12 @@ public class Login extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -232,7 +234,8 @@ public class Login extends javax.swing.JFrame {
         if ("Correo o usuario".equals(correo.getText())) {
             correo.setText("");
             correo.setForeground(Color.BLACK);
-        }    }//GEN-LAST:event_correoFocusGained
+        }
+    }//GEN-LAST:event_correoFocusGained
 
     private void contraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusGained
         defaultText();
@@ -257,7 +260,7 @@ public class Login extends javax.swing.JFrame {
                 || (!"Contraseña".equals(password) || !"".equals(password));
 
         if (!isEmpty) {
-             BaseDatos.conectarBD();
+            BaseDatos.conectarBD();
             if (BaseDatos.iniciarSesion(email, password)) {
                 this.dispose();
             } else {
@@ -269,6 +272,7 @@ public class Login extends javax.swing.JFrame {
         }
         ingresar.setEnabled(true);
     }//GEN-LAST:event_ingresarFocusGained
+
     /**
      *
      * @param args the command line arguments
