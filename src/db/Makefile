@@ -4,7 +4,6 @@ create:
 	-e POSTGRES_USER=root \
 	-e POSTGRES_PASSWORD=root \
 	-e POSTGRES_DB=post_evidence \
-	-e PGDATA=/var/lib/postgresql/data/pgdata \
 	-v pos_evidence_Volume:/var/lib/postgresql/data \
 	-p 5432:5432 \
 	postgres && docker container attach post_evidence
@@ -20,6 +19,9 @@ connect:
 
 attach:
 	docker container exec -it post_evidence psql -U root
+	
+command:
+	docker container exec -it post_evidence sh
 
 stop: 
 	docker container stop post_evidence
