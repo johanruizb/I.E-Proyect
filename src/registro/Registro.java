@@ -83,28 +83,16 @@ public class Registro extends javax.swing.JFrame {
                 nombreFocusLost(evt);
             }
         });
-        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nombreMouseClicked(evt);
-            }
-        });
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
 
         apellidos.setBackground(new java.awt.Color(255, 255, 255));
         apellidos.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         apellidos.setText("Apellidos:");
         apellidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                apellidosFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 apellidosFocusLost(evt);
-            }
-        });
-        apellidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                apellidosMouseClicked(evt);
             }
         });
 
@@ -112,18 +100,11 @@ public class Registro extends javax.swing.JFrame {
         cedula.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         cedula.setText("Número de cedula:");
         cedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cedulaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cedulaFocusLost(evt);
-            }
-        });
-        cedula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cedulaMouseClicked(evt);
-            }
-        });
-        cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedulaActionPerformed(evt);
             }
         });
 
@@ -131,32 +112,23 @@ public class Registro extends javax.swing.JFrame {
         ciudad.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         ciudad.setText("Ciudad:");
         ciudad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ciudadFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ciudadFocusLost(evt);
-            }
-        });
-        ciudad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ciudadMouseClicked(evt);
             }
         });
 
         email.setBackground(new java.awt.Color(255, 255, 255));
         email.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         email.setText("Email:");
-        email.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                emailMouseDragged(evt);
-            }
-        });
         email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 emailFocusLost(evt);
-            }
-        });
-        email.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                emailMouseClicked(evt);
             }
         });
 
@@ -164,18 +136,11 @@ public class Registro extends javax.swing.JFrame {
         comprobarEmail.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         comprobarEmail.setText("Comprobar Email:");
         comprobarEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                comprobarEmailFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 comprobarEmailFocusLost(evt);
-            }
-        });
-        comprobarEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                comprobarEmailMouseClicked(evt);
-            }
-        });
-        comprobarEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprobarEmailActionPerformed(evt);
             }
         });
 
@@ -183,13 +148,11 @@ public class Registro extends javax.swing.JFrame {
         nombreEmpresa.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         nombreEmpresa.setText("Empresa:");
         nombreEmpresa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreEmpresaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nombreEmpresaFocusLost(evt);
-            }
-        });
-        nombreEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nombreEmpresaMouseClicked(evt);
             }
         });
 
@@ -197,13 +160,11 @@ public class Registro extends javax.swing.JFrame {
         departamento.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         departamento.setText("Area Operativa:");
         departamento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                departamentoFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 departamentoFocusLost(evt);
-            }
-        });
-        departamento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                departamentoMouseClicked(evt);
             }
         });
 
@@ -211,13 +172,11 @@ public class Registro extends javax.swing.JFrame {
         contraseña.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         contraseña.setText("Contraseña:");
         contraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                contraseñaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 contraseñaFocusLost(evt);
-            }
-        });
-        contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                contraseñaMouseClicked(evt);
             }
         });
 
@@ -225,13 +184,11 @@ public class Registro extends javax.swing.JFrame {
         verificarContraseña.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         verificarContraseña.setText("Contraseña:");
         verificarContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                verificarContraseñaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 verificarContraseñaFocusLost(evt);
-            }
-        });
-        verificarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                verificarContraseñaMouseClicked(evt);
             }
         });
 
@@ -243,9 +200,9 @@ public class Registro extends javax.swing.JFrame {
         creaRegistro.setBackground(new java.awt.Color(33, 150, 243));
         creaRegistro.setForeground(new java.awt.Color(255, 255, 255));
         creaRegistro.setText("Registrar");
-        creaRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creaRegistroMouseClicked(evt);
+        creaRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creaRegistroActionPerformed(evt);
             }
         });
 
@@ -470,17 +427,17 @@ public class Registro extends javax.swing.JFrame {
         return (validarInfoPersonal() && validarInfoAcceso() && validarInfoLocacion());
     }
 
+    private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
+        setEmptyText(nombre, "Nombre:");
+    }//GEN-LAST:event_nombreFocusGained
+
     private void nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusLost
         comprobacionBasica(nombre, "Nombre:");
     }//GEN-LAST:event_nombreFocusLost
 
-    private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
-        setEmptyText(nombre, "Nombre:");
-    }//GEN-LAST:event_nombreMouseClicked
-
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
+    private void apellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidosFocusGained
+        setEmptyText(apellidos, "Apellidos:");
+    }//GEN-LAST:event_apellidosFocusGained
 
     private void apellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidosFocusLost
         if (!apellidos.getText().equals("Apellidos:")) {
@@ -493,34 +450,22 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_apellidosFocusLost
 
-    private void apellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_apellidosMouseClicked
-        // TODO add your handling code here:
-        setEmptyText(apellidos, "Apellidos:");
-    }//GEN-LAST:event_apellidosMouseClicked
+    private void cedulaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusGained
+        setEmptyText(cedula, "Número de cedula:");
+    }//GEN-LAST:event_cedulaFocusGained
 
     private void cedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusLost
         comprobacionBasica(cedula, "Número de cedula:");
     }//GEN-LAST:event_cedulaFocusLost
 
-    private void cedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cedulaMouseClicked
-        setEmptyText(cedula, "Número de cedula:");
-    }//GEN-LAST:event_cedulaMouseClicked
-
-    private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cedulaActionPerformed
+    private void ciudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusGained
+        setEmptyText(ciudad, "Ciudad:");
+    }//GEN-LAST:event_ciudadFocusGained
 
     private void ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ciudadFocusLost
         comprobacionBasica(ciudad, "Ciudad:");
     }//GEN-LAST:event_ciudadFocusLost
 
-    private void ciudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ciudadMouseClicked
-        setEmptyText(ciudad, "Ciudad:");
-    }//GEN-LAST:event_ciudadMouseClicked
-
-    private void emailMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseDragged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailMouseDragged
     private boolean validandoEmail(String emailEntrante) {
         String validacion = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
         Pattern pattern = Pattern.compile(validacion);
@@ -535,19 +480,14 @@ public class Registro extends javax.swing.JFrame {
             return false;
         }
     }
-    private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
-        if (!email.getText().equals("Email:")) {
-            if (!isCorrect(email)) {
-                comprobacionBasica(email, "Email:");
-            } else {
-                validandoEmail(email.getText());
-            }
-        }
-    }//GEN-LAST:event_emailFocusLost
 
-    private void emailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailMouseClicked
+    private void emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusGained
         setEmptyText(email, "Email:");
-    }//GEN-LAST:event_emailMouseClicked
+    }//GEN-LAST:event_emailFocusGained
+
+    private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
+        validandoEmail(email.getText());
+    }//GEN-LAST:event_emailFocusLost
 
     private void comprobarEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comprobarEmailFocusLost
         if (!comprobarEmail.getText().equals("Comprobar Email:")) {
@@ -564,29 +504,26 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comprobarEmailFocusLost
 
-    private void comprobarEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprobarEmailMouseClicked
+    private void comprobarEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comprobarEmailFocusGained
         setEmptyText(comprobarEmail, "Comprobar Email:");
-    }//GEN-LAST:event_comprobarEmailMouseClicked
-
-    private void comprobarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprobarEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comprobarEmailActionPerformed
+    }//GEN-LAST:event_comprobarEmailFocusGained
 
     private void nombreEmpresaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreEmpresaFocusLost
         comprobacionBasica(nombreEmpresa, "Empresa:");
     }//GEN-LAST:event_nombreEmpresaFocusLost
 
-    private void nombreEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEmpresaMouseClicked
-        setEmptyText(nombreEmpresa, "Empresa:");
-    }//GEN-LAST:event_nombreEmpresaMouseClicked
+    private void departamentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departamentoFocusGained
+        setEmptyText(departamento, "Area Operativa:");
+    }//GEN-LAST:event_departamentoFocusGained
 
     private void departamentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departamentoFocusLost
         comprobacionBasica(departamento, "Area Operativa:");
     }//GEN-LAST:event_departamentoFocusLost
 
-    private void departamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_departamentoMouseClicked
-        setEmptyText(departamento, "Area Operativa:");
-    }//GEN-LAST:event_departamentoMouseClicked
+        private void contraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusGained
+            setEmptyText(contraseña, "Contraseña:");
+    }//GEN-LAST:event_contraseñaFocusGained
+
 
     private void contraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusLost
         String password = new String(contraseña.getPassword());
@@ -615,10 +552,6 @@ public class Registro extends javax.swing.JFrame {
         return comparar.matches();
     }
 
-    private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
-        setEmptyText(contraseña, "Contraseña:");
-    }//GEN-LAST:event_contraseñaMouseClicked
-
     private void verificarContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarContraseñaFocusLost
         String password = new String(contraseña.getPassword());
         String password2 = new String(verificarContraseña.getPassword());
@@ -635,12 +568,15 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verificarContraseñaFocusLost
 
-    private void verificarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verificarContraseñaMouseClicked
+    private void verificarContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarContraseñaFocusGained
         setEmptyText(verificarContraseña, "Contraseña:");
-    }//GEN-LAST:event_verificarContraseñaMouseClicked
+    }//GEN-LAST:event_verificarContraseñaFocusGained
 
-    private void creaRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creaRegistroMouseClicked
+    private void nombreEmpresaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreEmpresaFocusGained
+        setEmptyText(nombreEmpresa, "Empresa:");
+    }//GEN-LAST:event_nombreEmpresaFocusGained
 
+    private void creaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaRegistroActionPerformed
         if (comprobarDatos()) {
             BaseDatos.conectarBD();
             Usuario user = new Usuario();
@@ -684,12 +620,7 @@ public class Registro extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Formulario incompleto o incorrecto algun campo\nPor favor, revisalo e intentalo de nuevo");
         }
-    }//GEN-LAST:event_creaRegistroMouseClicked
-
-    private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
-        // TODO add your handling code here:
-        setEmptyText(nombre, "Nombre:");
-    }//GEN-LAST:event_nombreFocusGained
+    }//GEN-LAST:event_creaRegistroActionPerformed
 
     private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
     private Border bordeAzul = BorderFactory.createLineBorder(Color.BLUE);

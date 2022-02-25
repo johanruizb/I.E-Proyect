@@ -73,9 +73,9 @@ public class Login extends javax.swing.JFrame {
         ingresar.setMaximumSize(new java.awt.Dimension(100, 35));
         ingresar.setMinimumSize(new java.awt.Dimension(100, 35));
         ingresar.setPreferredSize(new java.awt.Dimension(100, 35));
-        ingresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresarActionPerformed(evt);
+        ingresar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ingresarFocusGained(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -88,15 +88,17 @@ public class Login extends javax.swing.JFrame {
         entradas.setOpaque(false);
         entradas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        correo.setForeground(new java.awt.Color(0, 0, 0));
+        correo.setForeground(new java.awt.Color(204, 204, 204));
+        correo.setText("Correo o usuario");
+        correo.setToolTipText("");
+        correo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                correoFocusGained(evt);
+            }
+        });
         correo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 correoMouseClicked(evt);
-            }
-        });
-        correo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoActionPerformed(evt);
             }
         });
         entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
@@ -109,14 +111,9 @@ public class Login extends javax.swing.JFrame {
 
         contraseña.setForeground(new java.awt.Color(204, 204, 204));
         contraseña.setText("Contraseña");
-        contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                contraseñaMouseClicked(evt);
-            }
-        });
-        contraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaActionPerformed(evt);
+        contraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                contraseñaFocusGained(evt);
             }
         });
         entradas.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 180, 36));
@@ -134,9 +131,9 @@ public class Login extends javax.swing.JFrame {
         recordar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recordar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         recordar.setNextFocusableComponent(ingresar);
-        recordar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordarActionPerformed(evt);
+        recordar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                recordarFocusGained(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -199,59 +196,9 @@ public class Login extends javax.swing.JFrame {
         }
     }
 
-    private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-        // TODO add your handling code here:
-        ingresar.setEnabled(false);
-
-        String email = !"Correo o usuario".equals(correo.getText())
-                ? correo.getText()
-                : "NONE";
-
-        String contraseña = !"Contraseña".equals(String.valueOf(this.contraseña.getPassword()))
-                ? String.valueOf(this.contraseña.getPassword())
-                : "NONE";
-
-        BaseDatos.conectarBD();
-        if (BaseDatos.iniciarSesion(email, contraseña)) {
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Contraseña erronea o usuario inexistente");
-        }
-        defaultText();
-
-        ingresar.setEnabled(true);
-    }//GEN-LAST:event_ingresarActionPerformed
-
-    private void recordarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordarActionPerformed
-        // TODO add your handling code here:
-        defaultText();
-    }//GEN-LAST:event_recordarActionPerformed
-
-    private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_correoActionPerformed
-
-    private void contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contraseñaActionPerformed
-
     private void correoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoMouseClicked
         // TODO add your handling code here:
-        defaultText();
-        if ("Correo o usuario".equals(correo.getText())) {
-            correo.setText("");
-            correo.setForeground(Color.BLACK);
-        }
     }//GEN-LAST:event_correoMouseClicked
-
-    private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
-        // TODO add your handling code here:
-        defaultText();
-        if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
-            contraseña.setText("");
-            contraseña.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_contraseñaMouseClicked
 
     private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
         // TODO add your handling code here:
@@ -279,6 +226,49 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_registroMouseExited
+
+    private void correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoFocusGained
+        defaultText();
+        if ("Correo o usuario".equals(correo.getText())) {
+            correo.setText("");
+            correo.setForeground(Color.BLACK);
+        }    }//GEN-LAST:event_correoFocusGained
+
+    private void contraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusGained
+        defaultText();
+        if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setText("");
+            contraseña.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_contraseñaFocusGained
+
+    private void recordarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recordarFocusGained
+        defaultText();
+    }//GEN-LAST:event_recordarFocusGained
+
+    private void ingresarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ingresarFocusGained
+        // TODO add your handling code here:
+        ingresar.setEnabled(false);
+
+        String email = correo.getText();
+        String password = String.valueOf(this.contraseña.getPassword());
+
+        boolean isEmpty = ("Correo o usuario".equals(correo.getText()) || "".equals(correo.getText()))
+                || (!"Contraseña".equals(password) || !"".equals(password));
+
+        if (!isEmpty) {
+             BaseDatos.conectarBD();
+            if (BaseDatos.iniciarSesion(email, password)) {
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Contraseña erronea o usuario inexistente");
+            }
+            defaultText();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingresa tu correo y contraseña");
+        }
+        ingresar.setEnabled(true);
+    }//GEN-LAST:event_ingresarFocusGained
     /**
      *
      * @param args the command line arguments
