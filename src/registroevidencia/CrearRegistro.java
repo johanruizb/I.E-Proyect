@@ -32,7 +32,7 @@ import javax.swing.border.Border;
 public class CrearRegistro extends javax.swing.JFrame {
 
     private javax.swing.JPanel backPanel;
-    private javax.swing.JButton trabajoAprobado, trabajoRechazado, botonAprobado,
+    private javax.swing.JButton trabajoAprobado, trabajoRechazado, crearRegistro,
             botonRechazada, botonAtras;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTextField tipoTrabajo;
@@ -40,13 +40,14 @@ public class CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField numeroInforme, numeroRegistro, selecinarFecha;
     private javax.swing.JTextField fechaRegistroInformacion;
     private javax.swing.JPanel panelBotones;
-    private Border borde = BorderFactory.createLineBorder(new Color(33, 150, 243));
-    private Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
-    private static int click = 0;
+    private Border bordeRojo = BorderFactory.createLineBorder(new Color(213, 0, 0), 2, true);
+    private Border borde = BorderFactory.createLineBorder(new Color(112, 112, 112), 1, true);
+    private static int click = 0, click2 = 0;
     private boolean bandera = false, desabilitado = true;
     private JComboBox<String> opciones, ciudadOperacion;
     private Date day;
     private GregorianCalendar calender;
+    //private  String[] ciudad ;
 
     /**
      * Creates new form CrearRegistro
@@ -65,7 +66,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         backPanel = new javax.swing.JPanel();//panel1
 
         backPanel.setBorder(borde);
-        backPanel.setBackground(new Color(112, 112, 112));
+        backPanel.setBackground(new Color(204, 204, 204));
         backPanel.setOpaque(true);
 
         backPanel.setLayout(new GridBagLayout());
@@ -80,7 +81,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         //ciudadOperacion = new javax.swing.JTextField();//ciudad de operacion
         fechaRegistroInformacion = new javax.swing.JTextField();
         botonRechazada = new javax.swing.JButton();//boton para no aprobar evidencia
-        botonAprobado = new javax.swing.JButton();//boton para aprobar evidencia
+        crearRegistro = new javax.swing.JButton();
         calender = new GregorianCalendar();
         //======================================================================
         //======================================================================
@@ -160,7 +161,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         scroll.setViewportView(observaciones);
         backPanel.add(scroll, gridBagConstraints);
         //=================================================================
-        selecinarFecha.setText("Seleccionar fecha ejecucion");
+        selecinarFecha.setText("fecha de ejecucion 02/12/2025 ");
         selecinarFecha.setBorder(borde);
         selecinarFecha.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -184,7 +185,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         backPanel.add(opciones, gridBagConstraints);
 
         //======================================================================
-        String[] ciudad = {"Selecione la ciuda de operacion", "Cali",
+        String[] ciudad = new String[]{"Selecione la ciuda de operacion", "Cali",
             "Manizales", "Medellin", "Pereira", "Tulua", "Armenia", "Popayan", "Bogota"};
         ciudadOperacion = new JComboBox<>(ciudad);
         ciudadOperacion.setPreferredSize(new java.awt.Dimension(400, 50));
@@ -199,7 +200,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         //=====================================================================
         fechaRegistroInformacion.setText(mostrar());
         fechaRegistroInformacion.setBorder(borde);
-        //fechaRegistroInformacion.setMinimumSize(new java.awt.Dimension(500, 50));
         fechaRegistroInformacion.setPreferredSize(new java.awt.Dimension(400, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -210,7 +210,6 @@ public class CrearRegistro extends javax.swing.JFrame {
         //=====================================================================
         botonAtras = new JButton("Atras ", new ImageIcon("src/imagenes2/blancoatras.png"));
         botonAtras.setPreferredSize(new java.awt.Dimension(150, 50));
-        //botonAtras.addMouseListener(escucha);
         botonAtras.setBackground(new Color(33, 150, 243));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -220,17 +219,17 @@ public class CrearRegistro extends javax.swing.JFrame {
         backPanel.add(botonAtras, gridBagConstraints);
 
         //======================================================================
-        botonAprobado.setText("Crear registro");
-        botonAprobado.setIcon(new ImageIcon("src/imagenes2/add.png"));
-        botonAprobado.setBackground(new Color(33, 150, 243));
-        botonAprobado.setMaximumSize(new java.awt.Dimension(150, 50));
-        botonAprobado.setMinimumSize(new java.awt.Dimension(150, 50));
-        botonAprobado.setPreferredSize(new java.awt.Dimension(150, 50));
+        crearRegistro.setText("Crear registro");
+        crearRegistro.setIcon(new ImageIcon("src/imagenes2/add.png"));
+        crearRegistro.setBackground(new Color(33, 150, 243));
+        crearRegistro.setMaximumSize(new java.awt.Dimension(150, 50));
+        crearRegistro.setMinimumSize(new java.awt.Dimension(150, 50));
+        crearRegistro.setPreferredSize(new java.awt.Dimension(150, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        backPanel.add(botonAprobado, gridBagConstraints);
+        backPanel.add(crearRegistro, gridBagConstraints);
         //======================================================================
 
         //======================================================================
@@ -279,9 +278,26 @@ public class CrearRegistro extends javax.swing.JFrame {
         });
         botonRechazada.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
+
                 botonRechazada.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 botonRechazada.setBackground(Color.red);
+            }
+        });
+        botonRechazada.addMouseListener(new MouseAdapter() {
 
+            public void mouseExited(MouseEvent e) {
+
+                botonRechazada.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+                botonRechazada.setBackground(new Color(33, 150, 243));
+
+                if (click == 1) {
+                    botonRechazada.setBackground(new Color(0, 33, 113));
+
+                } else if (click == 2 && click2 == 0) {
+                    botonRechazada.setBackground(new Color(33, 150, 243));
+                    botonRechazada.setIcon(null);
+                    click = 0;
+                }
             }
         });
         trabajoAprobado.addMouseListener(new MouseAdapter() {
@@ -291,37 +307,41 @@ public class CrearRegistro extends javax.swing.JFrame {
 
             }
         });
-        botonRechazada.addMouseListener(new MouseAdapter() {
+        trabajoAprobado.addMouseListener(new MouseAdapter() {
 
-            public void mouseClicked(MouseEvent e) {
-                botonRechazada.setIcon(new ImageIcon("src/imagenes2/xblanco.png"));
-                botonRechazada.setBackground(Color.red);
-                observaciones.requestFocus();
-                observaciones.setFocusable(true);
-                scroll.requestFocus();
-                scroll.setFocusable(true);
-                click = 1;
-                desabilitado = true;
+            public void mouseExited(MouseEvent e) {
+                trabajoAprobado.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+                trabajoAprobado.setBackground(new Color(33, 150, 243));
 
-                if (bandera == false && e.getSource().equals(botonRechazada)) {
-                    trabajoAprobado.setIcon(null);
+                if (click2 == 1) {
+                    trabajoAprobado.setBackground(new Color(0, 33, 113));
+
+                } else if (click2 == 2 && click == 0) {
                     trabajoAprobado.setBackground(new Color(33, 150, 243));
-                    bandera = true;
+                    trabajoAprobado.setIcon(null);
+                    observaciones.setBorder(borde);
+                    scroll.setBorder(borde);
+                    click2 = 0;
                 }
-
             }
         });
         botonRechazada.addMouseListener(new MouseAdapter() {
 
-            public void mouseExited(MouseEvent e) {
-                botonRechazada.setBackground(new Color(33, 150, 243));
-                botonRechazada.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-                if (click == 1 && e.getSource().equals(botonRechazada)) {
+            public void mouseClicked(MouseEvent e) {
+                botonRechazada.setIcon(new ImageIcon("src/imagenes2/xblanco.png"));
+                botonRechazada.setBackground(new Color(0, 33, 113));
+                observaciones.requestFocus();
+                observaciones.setFocusable(true);
+                scroll.requestFocus();
+                scroll.setFocusable(true);
+                click++;
+                desabilitado = true;
 
-                    botonRechazada.setBackground(Color.red);
-                } else {
+                if (click2 == 1 && click == 1) {
+                    trabajoAprobado.setIcon(null);
+                    trabajoAprobado.setBackground(new Color(33, 150, 243));
+                    click2 = 0;
 
-                    click = 0;
                 }
             }
         });
@@ -332,31 +352,19 @@ public class CrearRegistro extends javax.swing.JFrame {
                 trabajoAprobado.setIcon(new ImageIcon("src/imagenes2/blancoApro.png"));
                 observaciones.setFocusable(false);
                 scroll.setFocusable(false);
-                click = 1;
+                click2++;
                 desabilitado = false;
-                if (bandera == true && e.getSource().equals(trabajoAprobado)) {
+                if (click == 1 && click2 == 1) {
                     botonRechazada.setIcon(null);
                     botonRechazada.setBackground(new Color(33, 150, 243));
-                    bandera = false;
-                    if (desabilitado == true) {
-                        observaciones.setText("Esta es el area de observaciones");
+                    observaciones.setFocusable(false);
+                    click = 0;
+                    if (desabilitado == false) {
+                        observaciones.setText("Esta es el area de observaciones:");
                         observaciones.setFocusable(false);
 
                     }
-                }
 
-            }
-        });
-        trabajoAprobado.addMouseListener(new MouseAdapter() {
-
-            public void mouseExited(MouseEvent e) {
-                trabajoAprobado.setBackground(new Color(33, 150, 243));
-                trabajoAprobado.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-            if (click == 1 && e.getSource().equals(trabajoAprobado)) {
-                    trabajoAprobado.setBackground(Color.RED);
-                } else {
-
-                    click = 0;
                 }
             }
         });
@@ -364,7 +372,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         observaciones.addFocusListener(new FocusAdapter() {
             public void focusLost(FocusEvent e) {
                 if (observaciones.getText().equals("Esta es el area de observaciones")
-                        || observaciones.getText().equals("") && bandera == true) {
+                        || observaciones.getText().equals("") && desabilitado == true) {
                     observaciones.setBorder(bordeRojo);
                     scroll.setBorder(bordeRojo);
                     observaciones.setText("Esta es el area de observaciones");
@@ -404,16 +412,61 @@ public class CrearRegistro extends javax.swing.JFrame {
 
             }
         });
-        botonAprobado.addMouseListener(new MouseAdapter() {
+        crearRegistro.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
-                botonAprobado.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                botonAprobado.setBackground(Color.red);
+                crearRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                crearRegistro.setBackground(Color.red);
             }
         });
-        botonAprobado.addMouseListener(new MouseAdapter() {
+        crearRegistro.addMouseListener(new MouseAdapter() {
             public void mouseExited(MouseEvent e) {
-                botonAprobado.setBackground(new Color(33, 150, 243));
-                botonAprobado.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+                crearRegistro.setBackground(new Color(33, 150, 243));
+                crearRegistro.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+            }
+        });
+        crearRegistro.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                obtenerDatos();
+
+            }
+        });
+        selecinarFecha.addFocusListener(new FocusAdapter() {
+            public void focusLost(FocusEvent e) {
+
+                if (selecinarFecha.getText().equals("fecha de ejecucion 02/12/2025 ")
+                        || selecinarFecha.getText().equals("")) {
+                    selecinarFecha.setText("fecha de ejecucion 02/12/2025 ");
+                    selecinarFecha.setBorder(bordeRojo);
+
+                } else if (selecinarFecha.getText() != ""
+                        || selecinarFecha.getText() != "fecha de ejecucion 02/12/2025 ") {
+                    selecinarFecha.setBorder(borde);
+                    selecinarFecha.setText(selecinarFecha.getText());
+                }
+            }
+        });
+        selecinarFecha.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                selecinarFecha.setText("");
+                System.out.println("funcion clic");
+            }
+        });
+        opciones.addFocusListener(new FocusAdapter() {
+            public void focusLost(FocusEvent e) {
+                if (opciones.getSelectedItem().equals("Selecione el tipo de trabajo")) {
+                    opciones.setBorder(bordeRojo);
+                } else if (opciones.getSelectedItem() != "Selecione el tipo de trabajo") {
+                    opciones.setBorder(borde);
+                }
+            }
+        });
+        ciudadOperacion.addFocusListener(new FocusAdapter() {
+            public void focusLost(FocusEvent e) {
+                if (ciudadOperacion.getSelectedItem().equals("Selecione la ciuda de operacion")) {
+                    ciudadOperacion.setBorder(bordeRojo);
+                } else if (ciudadOperacion.getSelectedItem() != "Selecione la ciuda de operacion") {
+                    ciudadOperacion.setBorder(borde);
+                }
             }
         });
         //=====================================================================
@@ -436,13 +489,21 @@ public class CrearRegistro extends javax.swing.JFrame {
     //muestra la fecha en el componente
     public String mostrar() {
         String leyenda = "La creacion del registro se realizo el: ";
-        String meses[] = {"Enero", "febrero", "Marzo"};
-        System.out.println();
         String lugar = calender.getTimeZone().getDisplayName();
         int ano = calender.get(Calendar.YEAR);
         int mese = calender.get(Calendar.MONTH) + 1;
         int dia = calender.get(Calendar.DAY_OF_MONTH);
         return leyenda + dia + "/" + mese + "/" + ano + " " + lugar;
+
+    }
+
+    private void obtenerDatos() {
+        String numeroID = numeroRegistro.getText();
+        String informeNumero = numeroInforme.getText();
+        String observacion = observaciones.getText();
+        String localidad = (String) ciudadOperacion.getSelectedItem();
+        String fecha = mostrar();
+        String proceso = tipoTrabajo.getText();
 
     }
 
