@@ -34,12 +34,12 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
         panel1 = new JPanel();
-        panel1.setLayout(new BorderLayout());
         panel2 = new JPanel();
+        panel1.setLayout(new BorderLayout());
         panel2.setLayout(new BoxLayout(this.panel2, BoxLayout.Y_AXIS));
-        panel1.add(panel2);
+        // panel1.add(panel2);
         scroll = new JScrollPane();
-        scroll.add(panel2);
+        //scroll.add(panel2);
         panel1.add(scroll);
         add(panel1, BorderLayout.CENTER);
 
@@ -67,9 +67,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         panel2.add(tecnico7);
         panel2.add(tecnico8);
         panel2.add(tecnico9);
+        scroll.add(panel2);
         repaint();
         revalidate();
-        
+
     }
 
     /**
