@@ -31,7 +31,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-
 /**
  *
  * @author ALOMIA
@@ -71,7 +70,6 @@ public class Evidencias extends JFrame {
     }
 
     private void initComponents() {
-
 
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new BorderLayout(0, 0));
@@ -141,7 +139,6 @@ public class Evidencias extends JFrame {
         panelMenu.add(alertas);
         panelMenu.add(createSeparator());
 
-
         configuracion.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
         configuracion.setForeground(new Color(255, 255, 255));
         configuracion.setHorizontalAlignment(SwingConstants.LEFT);
@@ -165,7 +162,6 @@ public class Evidencias extends JFrame {
         scroll.setBorder(null);
         scroll.getVerticalScrollBar().setUnitIncrement(50);
 
-
         boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
         scroll.setViewportView(boxPanel);
 
@@ -176,7 +172,12 @@ public class Evidencias extends JFrame {
         crearEvidencia.setHorizontalAlignment(SwingConstants.LEFT);
         crearEvidencia.setHorizontalTextPosition(SwingConstants.RIGHT);
 
+        JPanel temporal = new JPanel();
+        temporal.add(crearEvidencia);
+
         centralPanel.add(boxPanel);
+
+        contPanel.add(temporal, BorderLayout.LINE_END);
         contPanel.add(panelMenu, BorderLayout.LINE_START);
         contPanel.add(centralPanel, BorderLayout.CENTER);
 
@@ -184,84 +185,6 @@ public class Evidencias extends JFrame {
 
         pack();
     }
-
-
-    private void aprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseExited
-        aprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-    }//GEN-LAST:event_aprobadasMouseExited
-
-    private void aprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseEntered
-        // TODO add your handling code here:
-        aprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-    }//GEN-LAST:event_aprobadasMouseEntered
-
-
-    private void aprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aprobadasMouseClicked
-        // TODO add your handling code here:
-        aprobadas.setOpaque(true);
-        aprobadas.setBackground(new Color(33, 150, 243));
-        pendientesAprobacion.setBackground(new Color(214, 214, 214));
-        noAprobadas.setBackground(new Color(214, 214, 214));
-        //incorporando evidencia la sub menú
-        manejador = new ManejadorEvidencia("APROBADA");
-        //if(manejador.getEstado().equals("APROBADA")){
-        System.out.println("Funcionando");
-        // System.out.println("Selecionaste no aprobadas");
-        System.out.println(manejador.getEstado());
-        creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "APROBADA");
-
-        repaint();
-        revalidate();
-        //}
-
-    }//GEN-LAST:event_aprobadasMouseClicked
-
-    private void noAprobadasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseEntered
-        // TODO add your handling code here:
-        noAprobadas.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_noAprobadasMouseEntered
-
-    private void noAprobadasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseExited
-        // TODO add your handling code here:
-        noAprobadas.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-    }//GEN-LAST:event_noAprobadasMouseExited
-
-    private void noAprobadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAprobadasMouseClicked
-        // TODO add your handling code here:
-        // System.out.println("Selecionaste no aprobadas");
-        noAprobadas.setOpaque(true);
-        aprobadas.setBackground(new Color(214, 214, 214));
-        noAprobadas.setBackground(new Color(33, 150, 243));
-        pendientesAprobacion.setBackground(new Color(214, 214, 214));
-
-        //if(manejador.getEstado().equals("RECHAZADA")){
-        //    System.out.println("Selecionaste no aprobadas");
-        //System.out.println(manejador.getDescripcion());
-        //creaEvidencia("19082236 ", " 17/02/2022 ", "Rechazado", "RECHAZADA");
-        // repaint();
-        // revalidate();
-        //}
-    }//GEN-LAST:event_noAprobadasMouseClicked
-
-    private void pendientesAprobacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseEntered
-        // TODO add your handling code here:
-        pendientesAprobacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_pendientesAprobacionMouseEntered
-
-    private void pendientesAprobacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseExited
-        // TODO add your handling code here:
-        pendientesAprobacion.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-    }//GEN-LAST:event_pendientesAprobacionMouseExited
-
-    private void pendientesAprobacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendientesAprobacionMouseClicked
-        // TODO add your handling code here:
-        pendientesAprobacion.setOpaque(true);
-        pendientesAprobacion.setBackground(new Color(33, 150, 243));
-        aprobadas.setBackground(new Color(214, 214, 214));
-        noAprobadas.setBackground(new Color(214, 214, 214));
-
-    }//GEN-LAST:event_pendientesAprobacionMouseClicked
 
     private void crearEvidenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearEvidenciaMouseEntered
         // TODO add your handling code here:
@@ -354,36 +277,5 @@ public class Evidencias extends JFrame {
             comp.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         }
     }
-    
-    private static int contador = 0;
-    private String buscando = "";
-    private ManejadorEvidencia componente;
-    private ManejadorEvidencia manejador;
-    //private JScrollPane scroll;
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel alertas;
-    private javax.swing.JLabel aprobadas;
-    private javax.swing.JLabel archivo;
-    private javax.swing.JTextField barraBusqueda;
-    private javax.swing.JPanel boxPanel;
-    private javax.swing.JLabel buscar;
-    private javax.swing.JPanel busqueda;
-    private javax.swing.JLabel configuracion;
-    private javax.swing.JPanel contPanel;
-    private javax.swing.JButton crearEvidencia;
-    private javax.swing.JLabel identificacion;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel menu;
-    private javax.swing.JLabel noAprobadas;
-    private javax.swing.JPanel paneInferior;
-    private javax.swing.JPanel panelBotonAlertas;
-    private javax.swing.JPanel panelBotonArchivos;
-    private javax.swing.JPanel panelBotonConfiguracion;
-    private javax.swing.JPanel panelBotonMenu;
-    private javax.swing.JPanel panelMenu;
-    private javax.swing.JLabel pendientesAprobacion;
-    private javax.swing.JScrollPane scroll;
-    private javax.swing.JPanel submenu;
-    // End of variables declaration//GEN-END:variables
 
 }
