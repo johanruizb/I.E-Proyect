@@ -73,7 +73,11 @@ public class Login extends JFrame {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setPreferredSize(new java.awt.Dimension(869, 500));
+<<<<<<< HEAD
         bg.setLayout(new BoxLayout(bg, BoxLayout.LINE_AXIS));
+=======
+        bg.setLayout(new javax.swing.BoxLayout(bg, javax.swing.BoxLayout.LINE_AXIS));
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
         bg.setSize(new Dimension(501, 288));
 
         panel.setPreferredSize(new java.awt.Dimension(235, 375));
@@ -114,8 +118,21 @@ public class Login extends JFrame {
         correo.setForeground(new java.awt.Color(204, 204, 204));
         correo.setText("Correo o usuario");
         correo.setToolTipText("");
+<<<<<<< HEAD
         correo.addFocusListener(focusEscucha);
 
+=======
+        correo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                correoFocusGained(evt);
+            }
+        });
+        correo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                correoMouseClicked(evt);
+            }
+        });
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
         entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
 
         iconEmail.setIcon(new ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/correo.png"))); // NOI18N
@@ -126,9 +143,17 @@ public class Login extends JFrame {
 
         contraseña.setForeground(new java.awt.Color(204, 204, 204));
         contraseña.setText("Contraseña");
+<<<<<<< HEAD
 
         contraseña.addFocusListener(focusEscucha);
 
+=======
+        contraseña.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                contraseñaFocusGained(evt);
+            }
+        });
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
         entradas.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 180, 36));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -141,11 +166,22 @@ public class Login extends JFrame {
         recordar.setText("Recordar usuario");
         recordar.setContentAreaFilled(false);
         recordar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+<<<<<<< HEAD
         recordar.setHorizontalAlignment(SwingConstants.CENTER);
         recordar.setHorizontalTextPosition(SwingConstants.RIGHT);
 
         recordar.addFocusListener(focusEscucha);
 
+=======
+        recordar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recordar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        recordar.setNextFocusableComponent(ingresar);
+        recordar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                recordarFocusGained(evt);
+            }
+        });
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -160,6 +196,13 @@ public class Login extends JFrame {
                 registroMouseClicked(evt);
             }
 
+<<<<<<< HEAD
+=======
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registroMouseExited(evt);
+            }
+
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registroMouseEntered(evt);
             }
@@ -177,6 +220,7 @@ public class Login extends JFrame {
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
+<<<<<<< HEAD
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addComponent(bg, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
                                 Short.MAX_VALUE));
@@ -184,6 +228,15 @@ public class Login extends JFrame {
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addComponent(bg, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
                                 Short.MAX_VALUE));
+=======
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
 
         pack();
     }
@@ -206,6 +259,7 @@ public class Login extends JFrame {
         registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
+<<<<<<< HEAD
     private void ingresarFocusGained(java.awt.event.FocusEvent evt) {
         ingresar.setEnabled(false);
 
@@ -229,6 +283,83 @@ public class Login extends JFrame {
         ingresar.setEnabled(true);
     }
 
+=======
+    private void correoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoMouseClicked
+
+    private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
+        // TODO add your handling code here:
+
+        {
+            /*Ocultar o destruir ventana actual*/
+            this.dispose();
+
+            /* Crear y mostrar el registro */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new Registro().setVisible(true);
+                }
+            });
+        }
+    }//GEN-LAST:event_registroMouseClicked
+
+    private void registroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseEntered
+        // TODO add your handling code here:
+        registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_registroMouseEntered
+
+    private void registroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseExited
+        // TODO add your handling code here:
+        registro.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_registroMouseExited
+
+    private void correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoFocusGained
+        defaultText();
+        if ("Correo o usuario".equals(correo.getText())) {
+            correo.setText("");
+            correo.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_correoFocusGained
+
+    private void contraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contraseñaFocusGained
+        defaultText();
+        if ("Contraseña".equals(String.valueOf(contraseña.getPassword()))) {
+            contraseña.setText("");
+            contraseña.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_contraseñaFocusGained
+
+    private void recordarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recordarFocusGained
+        defaultText();
+    }//GEN-LAST:event_recordarFocusGained
+
+    private void ingresarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ingresarFocusGained
+        // TODO add your handling code here:
+        ingresar.setEnabled(false);
+
+        String email = correo.getText();
+        String password = String.valueOf(this.contraseña.getPassword());
+
+        boolean isEmpty = ("Correo o usuario".equals(correo.getText()) || "".equals(correo.getText()))
+                || (!"Contraseña".equals(password) || !"".equals(password));
+
+        if (!isEmpty) {
+            BaseDatos.conectarBD();
+            if (BaseDatos.iniciarSesion(email, password)) {
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Contraseña erronea o usuario inexistente");
+            }
+            defaultText();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingresa tu correo y contraseña");
+        }
+        ingresar.setEnabled(true);
+    }//GEN-LAST:event_ingresarFocusGained
+
+>>>>>>> e31cecec8ce0baa3a6c1caa1b4c1e326f2c60cb5
     /**
      *
      * @param args the command line arguments
