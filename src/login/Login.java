@@ -54,7 +54,12 @@ public class Login extends JFrame {
      * Creates new form Login
      */
     public Login() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(501, 288));
+
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private void initComponents() {
@@ -71,9 +76,6 @@ public class Login extends JFrame {
         contraseña = new JPasswordField();
         recordar = new JCheckBox();
         registro = new JLabel();
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(501, 288));
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setPreferredSize(new java.awt.Dimension(869, 500));
