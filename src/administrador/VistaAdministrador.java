@@ -19,7 +19,7 @@ import javax.swing.border.Border;
 public class VistaAdministrador extends javax.swing.JFrame {
 
     private JPanel panel1, panel2;
-    private JScrollPane scroll;
+    //private JScrollPane scroll;
     private Border borde = BorderFactory.createLineBorder(new Color(204, 204, 204), 2, true);
 
     public VistaAdministrador() {
@@ -38,9 +38,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         panel1.setLayout(new BorderLayout());
         panel2.setLayout(new BoxLayout(this.panel2, BoxLayout.Y_AXIS));
         // panel1.add(panel2);
-        scroll = new JScrollPane();
+        //scroll = new JScrollPane();
         //scroll.add(panel2);
-        panel1.add(scroll);
+        //panel1.add(scroll);
+        panel1.add(panel2);
         add(panel1, BorderLayout.CENTER);
 
     }
@@ -67,7 +68,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         panel2.add(tecnico7);
         panel2.add(tecnico8);
         panel2.add(tecnico9);
-        scroll.add(panel2);
+        //scroll.add(panel2);
         repaint();
         revalidate();
 

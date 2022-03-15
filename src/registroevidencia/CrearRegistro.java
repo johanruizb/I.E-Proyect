@@ -14,6 +14,8 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,6 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
@@ -48,23 +51,34 @@ public class CrearRegistro extends javax.swing.JFrame {
     private Border bordeRojo = BorderFactory.createLineBorder(new Color(213, 0, 0), 2, true);
     private Border borde = BorderFactory.createLineBorder(new Color(112, 112, 112), 1, true);
     private static int click = 0, click2 = 0;
-    private boolean bandera = false, desabilitado = true,cierre=false;
+    private boolean bandera = false, desabilitado = true, cierre = false;
     private JComboBox<String> opciones, ciudadOperacion;
     private Date day;
     private GregorianCalendar calender;
-    private JLabel dia, mes, año, fecha;
+    private JLabel dia, mes, año, fecha, espacio;
     private JSpinner dias, meses, años;
+
+    private CrearRegistro reference = this;
+    private Evidencias viewEvidencias;
+
+    private ArrayList<String> months = new ArrayList<String>(Arrays.asList(
+            "Enero", "Febrero", "Marzo",
+            "Abril", "Mayo", "Junio", "Julio", "Agosto",
+            "Septiembre", "Octubre", "Noviembre", "Dociembre"));
 
     /**
      * Creates new form CrearRegistro
      */
-    public CrearRegistro() {
+    public CrearRegistro(Evidencias viewE) {
+        viewEvidencias = viewE;
         initComponents();
+
         this.setSize(896, 500);
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lookAndShow();
     }
 
     @SuppressWarnings("unchecked")
@@ -168,9 +182,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         scroll.setViewportView(observaciones);
         backPanel.add(scroll, gridBagConstraints);
         //=================================================================
-        //selecinarFecha.setText("fecha de ejecucion 02/12/2025 ");
-        // selecinarFecha.setBorder(borde);
-        //selecinarFecha.setPreferredSize(new java.awt.Dimension(400, 50));
+
         panelFecha = new JPanel();
         panelFecha.setLayout(new BoxLayout(panelFecha, BoxLayout.X_AXIS));
         panelFecha.setBackground(Color.WHITE);
@@ -180,9 +192,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         dia = new JLabel(" Dia: ");
         mes = new JLabel(" Mes: ");
         año = new JLabel(" Año: ");
-        String months[] = {"Enero", "Febrero", "Marzo",
-            "Abril", "Mayo", "Junio", "Julio", "Agosto",
-            "Septiembre", "Octubre", "Noviembre", "Dociembre"};
+
         dias = new JSpinner(new SpinnerNumberModel(1, 1, 31, 1));
         meses = new JSpinner(new SpinnerListModel(months));
         String year[] = {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030",
@@ -192,6 +202,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         meses.setMaximumSize(new Dimension(100, 50));
         años.setMaximumSize(new Dimension(70, 50));
         dias.setBorder(null);
+
         panelFecha.add(fecha);
         panelFecha.add(dia);
         panelFecha.add(dias);
@@ -250,11 +261,20 @@ public class CrearRegistro extends javax.swing.JFrame {
         botonAtras.setBackground(new Color(33, 150, 243));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         backPanel.add(botonAtras, gridBagConstraints);
-
+        //=====================================================================
+        espacio = new JLabel();
+        espacio.setPreferredSize(new java.awt.Dimension(150, 50));
+        espacio.setBackground(new Color(33, 150, 243));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        backPanel.add(espacio, gridBagConstraints);
         //======================================================================
         crearRegistro.setText("Crear registro");
         crearRegistro.setIcon(new ImageIcon("src/imagenes2/add.png"));
@@ -312,7 +332,7 @@ public class CrearRegistro extends javax.swing.JFrame {
                     numeroInforme.setBorder(bordeRojo);
                 } else if (numeroInforme.getText() != ""
                         || numeroInforme.getText() != "Rf: numero referencia") {
-                    numeroInforme.setText(numeroRegistro.getText());
+                    numeroInforme.setText(numeroInforme.getText());
                     numeroInforme.setBorder(borde);
                 }
             }
@@ -453,17 +473,22 @@ public class CrearRegistro extends javax.swing.JFrame {
                 botonAtras.setBackground(Color.red);
             }
         });
+
         botonAtras.addMouseListener(new MouseAdapter() {
+
             public void mouseExited(MouseEvent e) {
                 botonAtras.setBackground(new Color(33, 150, 243));
                 botonAtras.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
             }
         });
+
         botonAtras.addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
-                //new CrearRegistro().setVisible(false);
-               
+                // new CrearRegistro().setVisible(false);
+                /* Create and display the form */
+                reference.dispose();
+                viewEvidencias.setVisible(true);
             }
 
         });
@@ -471,17 +496,21 @@ public class CrearRegistro extends javax.swing.JFrame {
             public void mouseEntered(MouseEvent e) {
                 crearRegistro.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 crearRegistro.setBackground(Color.red);
+
             }
         });
+
         crearRegistro.addMouseListener(new MouseAdapter() {
             public void mouseExited(MouseEvent e) {
                 crearRegistro.setBackground(new Color(33, 150, 243));
                 crearRegistro.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
             }
         });
+
         crearRegistro.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                obtenerDatos();
+
+                verificandoDatos();
 
             }
         });
@@ -503,7 +532,7 @@ public class CrearRegistro extends javax.swing.JFrame {
         selecinarFecha.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 selecinarFecha.setText("");
-                System.out.println("funcion clic");
+
             }
         });
         opciones.addFocusListener(new FocusAdapter() {
@@ -530,6 +559,7 @@ public class CrearRegistro extends javax.swing.JFrame {
 
     //muestra la fecha en el componente
     public String mostrar() {
+
         String leyenda = "La creacion del registro se realizo el: ";
         String lugar = calender.getTimeZone().getDisplayName();
         int ano = calender.get(Calendar.YEAR);
@@ -538,41 +568,80 @@ public class CrearRegistro extends javax.swing.JFrame {
         return leyenda + dia + "/" + mese + "/" + ano + " " + lugar;
 
     }
+//obtiene los datos ingresados en el regristro 
 
     private void obtenerDatos() {
+
         String numeroID = numeroRegistro.getText();
         String informeNumero = numeroInforme.getText();
         String observacion = observaciones.getText();
         String localidad = (String) ciudadOperacion.getSelectedItem();
-        String fecha = mostrar();
+        String fecha = obtenerFecha();
         String proceso = tipoTrabajo.getText();
         String fechaEjecucion = obtenerFecha();
 
+        // SEND TO DB
+        viewEvidencias.addEvidencia(numeroID, fecha, "En aprobacion", "EN-ESPERA");
+
+        // reference.dispose();
+        // viewEvidencias.setVisible(true);
     }
 
     private String obtenerFecha() {
-        Object eldia = dias.getValue();
-        Object mess = meses.getValue();
-        Object anoss = años.getValue();
+        String eldia = String.valueOf(dias.getValue());
+
+        String mesPalabras = String.valueOf(meses.getValue());
+        String mess = String.valueOf(months.indexOf(mesPalabras) + 1);
+
+        String anoss = String.valueOf(años.getValue());
         return eldia + "/" + mess + "/" + anoss;
     }
 
-    private void cerrandoVentana() {
-        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    private void verificandoDatos() {
+        boolean faro = true;
+        while (faro) {
+            
+            System.out.println("Estoy funcionando");
+            if (numeroRegistro.getText().equals("") || numeroRegistro.getText()
+                    .equals("ID: numero contrato")) {
+                numeroRegistro.setBorder(bordeRojo);
+
+            }
+            if (numeroInforme.getText().equals("Rf: numero referencia")
+                    || numeroInforme.getText().equals("")) {
+                numeroInforme.setBorder(bordeRojo);
+               // JOptionPane.showMessageDialog(this, "Datos incorrectos");
+
+            }
+            if (click == 0 && click2 == 0) {
+                botonRechazada.setBorder(bordeRojo);
+                trabajoAprobado.setBorder(bordeRojo);
+
+            }
+            if (click == 1) {
+                isEntyObsevaciones();
+
+            } //else {
+            //reference.dispose();
+            // viewEvidencias.setVisible(true);
+            
+        }
+        reference.dispose();
+        viewEvidencias.setVisible(true);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void isEntyObsevaciones() {
+        if (observaciones.getText().equals("")
+                || observaciones.getText().equals("Esta es el area de observaciones")) {
+            observaciones.setBorder(bordeRojo);
+            scroll.setBorder(bordeRojo);
+        }
+    }
+
+    private void lookAndShow() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
@@ -591,16 +660,12 @@ public class CrearRegistro extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CrearRegistro.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-       
+
             public void run() {
-                new CrearRegistro().setVisible(true);
-                
+                reference.setVisible(true);
             }
-            
         });
     }
 
