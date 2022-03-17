@@ -2,8 +2,6 @@ package db;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import login.Usuario;
@@ -17,18 +15,16 @@ public class BaseDatos {
 
     private static Connection conn = null;
 
-/*
     public static void main(String[] args) {
         BaseDatos transacciones = new BaseDatos();
         transacciones.conectarBD();
-        String[] consultas = new String[]{"email, contraseña"};
-        String[] valores = new String[]{"informacion_acceso WHERE email = 'juan@gmail.com'"};
+        String[] consultas = new String[]{"dummy(cedula)"};
+        int dummy = (int) (Math.random() * 10000);
+        String[] valores = new String[]{String.format("('%d'),('%d')", dummy, dummy + 1)};
 
-        ArrayList<String> result = consultarInformacion(consultas, valores);
-
-        System.out.println("Resultado " + result);
+        insertarInformacion(consultas, valores);
     }
-*/
+
     /**
      * conectarBD. Metoddo que se encarga de crear la conexion con la base de
      * datos.
@@ -89,22 +85,19 @@ public class BaseDatos {
      */
     private static void insertarInformacion(String[] consultas, String[] valores) {
         for (int i = 0; i < consultas.length; i++) {
-
-            ResultSet rs = null;
             Statement st = null;
-
             try {
 
-                conn.setAutoCommit(true);
                 st = conn.createStatement();
                 String consulta = String.format("INSERT INTO %s VALUES %s;", consultas[i], valores[i]);
-                rs = st.executeQuery(consulta);
+                st.executeQuery(consulta);
+                int numeroInserciones = (valores[i].split("\\)").length);
+                System.out.println(String.format("INSERT 0 %d", numeroInserciones));
             } catch (SQLException ex) {
                 Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 try {
-                    if (rs != null && st != null) {
-                        rs.close();
+                    if (st != null) {
                         st.close();
                     }
                 } catch (SQLException ex) {
@@ -134,7 +127,6 @@ public class BaseDatos {
 
             try {
 
-                conn.setAutoCommit(true);
                 st = conn.createStatement();
 
                 String consulta = String.format("SELECT %s FROM %s;", consultas[i], valores[i]);
