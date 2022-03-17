@@ -4,6 +4,8 @@ import db.BaseDatos;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 
 import javax.swing.BoxLayout;
@@ -46,9 +48,10 @@ public class Login extends JFrame {
     private JCheckBox recordar;
     private JLabel registro;
 
-    private Login reference = this;
-    private EscuchaFoco focusEscucha = new EscuchaFoco();
-    private EscuchaMouse mouseEscucha = new EscuchaMouse();
+    private final Login reference = this;
+    private final EscuchaFoco focusEscucha = new EscuchaFoco();
+    private final EscuchaMouse mouseEscucha = new EscuchaMouse();
+    private final EscuchaAction actionEscucha = new EscuchaAction();
 
     /**
      * Creates new form Login
@@ -88,7 +91,7 @@ public class Login extends JFrame {
         panel.setLayout(new java.awt.GridBagLayout());
 
         logo.setHorizontalAlignment(SwingConstants.CENTER);
-        logo.setIcon(new ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/1.png"))); // NOI18N
+        logo.setIcon(new ImageIcon(getClass().getResource("/img/login/1.png")));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -105,6 +108,7 @@ public class Login extends JFrame {
         ingresar.setPreferredSize(new java.awt.Dimension(100, 35));
 
         ingresar.addFocusListener(focusEscucha);
+        ingresar.addActionListener(actionEscucha);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -122,10 +126,10 @@ public class Login extends JFrame {
         correo.addFocusListener(focusEscucha);
         entradas.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 36));
 
-        iconEmail.setIcon(new ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/correo.png")));
+        iconEmail.setIcon(new ImageIcon(getClass().getResource("/img/login/correo.png")));
         entradas.add(iconEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        iconPass.setIcon(new ImageIcon(getClass().getResource("/imagenes/Proyecto_EM/password.png")));
+        iconPass.setIcon(new ImageIcon(getClass().getResource("/img/login/contraseña.png")));
         entradas.add(iconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
         contraseña.setForeground(new java.awt.Color(204, 204, 204));
@@ -204,9 +208,39 @@ public class Login extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Login().setVisible(true);
+                new Login();
             }
         });
+    }
+
+    private class EscuchaAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (ae.getSource().equals(ingresar)) {
+                ingresar.setEnabled(false);
+
+                String email = correo.getText();
+                String password = String.valueOf(contraseña.getPassword());
+
+                boolean isEmpty = ("Correo o usuario".equals(correo.getText()) || "".equals(correo.getText()))
+                        || (!"Contraseña".equals(password) || !"".equals(password));
+
+                if (!isEmpty) {
+                    BaseDatos.conectarBD();
+                    if (BaseDatos.iniciarSesion(email, password)) {
+                        reference.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(reference, "Contraseña erronea o usuario inexistente");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(reference, "Ingresa tu correo y contraseña");
+                }
+
+                ingresar.setEnabled(true);
+            }
+        }
+
     }
 
     private class EscuchaMouse extends MouseAdapter {
@@ -214,14 +248,14 @@ public class Login extends JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             if (e.getSource().equals(registro)) {
-                /* Ocultar o destruir ventana actual */
-                reference.dispose();
+                // Ocultar o destruir ventana actual
+                reference.setVisible(false);
 
-                /* Crear y mostrar el registro */
+                // Crear y mostrar el registro
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        new Registro().setVisible(true);
+                        new Registro(reference);
                     }
                 });
             }
@@ -251,28 +285,9 @@ public class Login extends JFrame {
                     contraseña.setText("");
                     contraseña.setForeground(Color.BLACK);
                 }
-            } else if (e.getSource().equals(ingresar)) {
-                ingresar.setEnabled(false);
-
-                String email = correo.getText();
-                String password = String.valueOf(contraseña.getPassword());
-
-                boolean isEmpty = ("Correo o usuario".equals(correo.getText()) || "".equals(correo.getText()))
-                        || (!"Contraseña".equals(password) || !"".equals(password));
-
-                if (!isEmpty) {
-                    BaseDatos.conectarBD();
-                    if (BaseDatos.iniciarSesion(email, password)) {
-                        reference.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(reference, "Contraseña erronea o usuario inexistente");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(reference, "Ingresa tu correo y contraseña");
-                }
-
-                ingresar.setEnabled(true);
             } else if (e.getSource().equals(recordar)) {
+                defaultText();
+            } else if (e.getSource().equals(ingresar)) {
                 defaultText();
             }
         }

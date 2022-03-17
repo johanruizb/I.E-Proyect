@@ -13,19 +13,14 @@ import java.awt.EventQueue;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,6 +40,8 @@ public class Evidencias extends JFrame {
 
     private final EscuchaMouse listenerMouse = new EscuchaMouse();
     private boolean menuRetraido = false;
+
+    private Evidencias reference = this;
 
     public Evidencias() {
         initComponents();
@@ -101,10 +98,10 @@ public class Evidencias extends JFrame {
         panelMenu.setVerifyInputWhenFocusTarget(false);
 
         menu.setBackground(new Color(33, 150, 243));
-        menu.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        menu.setFont(new Font("Segoe UI", 0, 14));
         menu.setForeground(new Color(255, 255, 255));
         menu.setHorizontalAlignment(SwingConstants.LEFT);
-        menu.setIcon(new ImageIcon(getClass().getResource("/imagenes2/Menu_Icon_1.png"))); // NOI18N
+        menu.setIcon(new ImageIcon(getClass().getResource("/img/gui/menu.png")));
         menu.setText("Menú    ");
         menu.setToolTipText("");
         menu.setPreferredSize(null);
@@ -113,10 +110,10 @@ public class Evidencias extends JFrame {
         panelMenu.add(menu);
         panelMenu.add(createSeparator());
 
-        archivo.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        archivo.setFont(new Font("Segoe UI", 0, 14));
         archivo.setForeground(new Color(255, 255, 255));
         archivo.setHorizontalAlignment(SwingConstants.LEFT);
-        archivo.setIcon(new ImageIcon(getClass().getResource("/imagenes/archivo.png"))); // NOI18N
+        archivo.setIcon(new ImageIcon(getClass().getResource("/img/gui/evidencia.png")));
         archivo.setText("Achivos");
         archivo.setMaximumSize(new Dimension(70, 30));
         archivo.setMinimumSize(new Dimension(70, 30));
@@ -125,10 +122,10 @@ public class Evidencias extends JFrame {
         panelMenu.add(archivo);
         panelMenu.add(createSeparator());
 
-        alertas.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        alertas.setFont(new Font("Segoe UI", 0, 14));
         alertas.setForeground(new Color(255, 255, 255));
         alertas.setHorizontalAlignment(SwingConstants.LEFT);
-        alertas.setIcon(new ImageIcon(getClass().getResource("/imagenes2/Feedback_Icon_2.png"))); // NOI18N
+        alertas.setIcon(new ImageIcon(getClass().getResource("/img/gui/notificacion.png")));
 
         alertas.setText("Alertas");
         alertas.setToolTipText("");
@@ -139,10 +136,10 @@ public class Evidencias extends JFrame {
         panelMenu.add(alertas);
         panelMenu.add(createSeparator());
 
-        configuracion.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
+        configuracion.setFont(new Font("Segoe UI", 0, 14));
         configuracion.setForeground(new Color(255, 255, 255));
         configuracion.setHorizontalAlignment(SwingConstants.LEFT);
-        configuracion.setIcon(new ImageIcon(getClass().getResource("/imagenes2/Settings_Icon_2.png"))); // NOI18N
+        configuracion.setIcon(new ImageIcon(getClass().getResource("/img/gui/ajustes.png")));
         configuracion.setText("Ajustes");
 
         configuracion.setAlignmentX(200.0F);
@@ -167,10 +164,11 @@ public class Evidencias extends JFrame {
 
         crearEvidencia.setBackground(new Color(33, 150, 243));
         crearEvidencia.setForeground(new Color(255, 255, 255));
-        crearEvidencia.setIcon(new ImageIcon(getClass().getResource("/imagenes2/add.png"))); // NOI18N
+        crearEvidencia.setIcon(new ImageIcon(getClass().getResource("/img/gui/añadir.png")));
         crearEvidencia.setText("Crear evidencia ");
         crearEvidencia.setHorizontalAlignment(SwingConstants.LEFT);
         crearEvidencia.setHorizontalTextPosition(SwingConstants.RIGHT);
+        crearEvidencia.addMouseListener(listenerMouse);
 
         JPanel temporal = new JPanel();
         temporal.add(crearEvidencia);
@@ -185,18 +183,6 @@ public class Evidencias extends JFrame {
 
         pack();
     }
-
-    private void crearEvidenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearEvidenciaMouseEntered
-        // TODO add your handling code here:
-        crearEvidencia.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        crearEvidencia.setBackground(new Color(171, 71, 188));
-    }//GEN-LAST:event_crearEvidenciaMouseEntered
-
-    private void crearEvidenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearEvidenciaMouseExited
-        // TODO add your handling code here:
-        crearEvidencia.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        crearEvidencia.setBackground(new Color(33, 150, 243));
-    }//GEN-LAST:event_crearEvidenciaMouseExited
 
     /**
      * @param args the command line arguments
@@ -261,6 +247,8 @@ public class Evidencias extends JFrame {
 
                 panelMenu.repaint();
                 panelMenu.revalidate();
+            } else if (e.getSource().equals(crearEvidencia)) {
+                reference.setVisible(false);
             }
         }
 

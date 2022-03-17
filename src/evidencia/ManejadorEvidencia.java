@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import reutilizable.EmptySpace;
 
 /**
  *
@@ -22,24 +23,34 @@ import javax.swing.border.Border;
  */
 public class ManejadorEvidencia extends JPanel implements Serializable {
 
-    private JLabel identificador, fechaEvidencia, descipcion1, estado, iconoEstado;
-    private ImageIcon carpeta = new ImageIcon("src/imagenes2/folder.png");
+    private JLabel identificador, fechaEvidencia, descipcion1, estado; //,iconoEstado;
+    private EmptySpace colorEstado;
+    private ImageIcon carpeta;
     private Border borde = BorderFactory.createLineBorder(new Color(204, 204, 204), 2, true);
+    private JPanel state = new JPanel(new GridBagLayout());
 
     public ManejadorEvidencia(String referencia, String fecha, String descripcion, String estado) {
+
+        this.carpeta = new ImageIcon(getClass().getResource("/img/gui/carpeta.png"));
+
         this.identificador = new JLabel(referencia, carpeta, JLabel.LEFT);
         this.fechaEvidencia = new JLabel(fecha, JLabel.LEFT);
         this.estado = new JLabel(descripcion, JLabel.CENTER);
+        this.colorEstado = new EmptySpace(12, EmptySpace.ALTO);
 
-        if (estado.equals("EN-ESPERA")) {
-            this.iconoEstado = new JLabel(new ImageIcon("src/imagenes2/en-aprobacion.png"), SwingConstants.CENTER);
-        } else if (estado.equals("APROBADO")) {
-
-            this.iconoEstado = new JLabel(new ImageIcon("src/imagenes2/aprobada.png"), SwingConstants.CENTER);
-        } else if (estado.equals("RECHAZADA")) {
-            this.iconoEstado = new JLabel(new ImageIcon("src/imagenes2/rechazada.png"), SwingConstants.CENTER);
-        } else {
-            this.iconoEstado = new JLabel(new ImageIcon("imagen/default.png"), SwingConstants.CENTER);
+        switch (estado) {
+            case "EN-ESPERA":
+                this.colorEstado.setColor(Color.ORANGE);
+                break;
+            case "APROBADO":
+                this.colorEstado.setColor(Color.GREEN.darker());
+                break;
+            case "RECHAZADA":
+                this.colorEstado.setColor((Color.RED.darker()));
+                break;
+            default:
+                this.colorEstado.setColor(Color.MAGENTA.darker());
+                break;
         }
 
         this.setBorder(borde);
@@ -47,7 +58,6 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
         this.setLayout(new GridBagLayout());
 
         GridBagConstraints limites = new GridBagConstraints();
-        JPanel state = new JPanel(new GridBagLayout());
 
         limites.fill = GridBagConstraints.NONE;
         limites.gridx = 0;
@@ -67,18 +77,13 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
         state.add(this.estado, limites);
 
         limites.gridx = 1;
-        state.add(this.iconoEstado, limites);
-
+        state.add(colorEstado, limites);
         limites.gridx = 3;
         this.add(state, limites);
 
         this.repaint();
         this.revalidate();
 
-    }
-
-    public ManejadorEvidencia(String stado) {
-        this.estado = estado;
     }
 
     public String getIdentificador() {
@@ -96,11 +101,4 @@ public class ManejadorEvidencia extends JPanel implements Serializable {
     public String getEstado() {
         return estado.getText();
     }
-
-    private JLabel createEmptySpace() {
-        JLabel x = (new JLabel(""));
-        x.setBorder(BorderFactory.createEmptyBorder(0, 200, 0, 0));
-        return x;
-    }
-
 }

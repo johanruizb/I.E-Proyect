@@ -15,7 +15,6 @@ public class BaseDatos {
 
     private static Connection conn = null;
 
-    
     public static void main(String[] args) {
         BaseDatos transacciones = new BaseDatos();
         transacciones.conectarBD();
@@ -25,7 +24,7 @@ public class BaseDatos {
 
         insertarInformacion(consultas, valores);
     }
-     
+
     /**
      * conectarBD. Metoddo que se encarga de crear la conexion con la base de
      * datos.
