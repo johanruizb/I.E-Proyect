@@ -8,12 +8,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,8 +25,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 
 import login.Login;
@@ -66,7 +61,7 @@ public class Registro extends JFrame {
     private JPasswordField verificarContraseña;
 
     private Login viewLogin;
-    private Registro reference = this;
+    private final Registro reference = this;
 
     private final Border bordeVacio = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 
@@ -427,11 +422,7 @@ public class Registro extends JFrame {
             nombreEmpresa.setBorder(bordeRojo);
         }
 
-        if (i == 3) {
-            return true;
-        }
-
-        return false;
+        return i == 3;
     }
 
     private boolean comprobarDatos() {
