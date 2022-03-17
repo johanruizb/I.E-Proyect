@@ -27,14 +27,20 @@ public class EmptySpace extends JLabel {
     public EmptySpace(int size, String rellenar) {
         setOpaque(false);
 
-        if (rellenar.equals(ALTO)) {
-            Border bordeVacio = BorderFactory.createEmptyBorder(size, 0, size, 0);
-            setBorder(bordeVacio);
-        } else if (rellenar.equals(ANCHO)) {
-            Border bordeVacio = BorderFactory.createEmptyBorder(0, size, 0, size);
-            setBorder(bordeVacio);
-        } else {
-            setToolTipText("Por favor ingresa un rellenado correcto");
+        switch (rellenar) {
+            case ALTO: {
+                Border bordeVacio = BorderFactory.createEmptyBorder(size, 0, size, 0);
+                setBorder(bordeVacio);
+                break;
+            }
+            case ANCHO: {
+                Border bordeVacio = BorderFactory.createEmptyBorder(0, size, 0, size);
+                setBorder(bordeVacio);
+                break;
+            }
+            default:
+                setToolTipText("Por favor ingresa un rellenado correcto");
+                break;
         }
     }
 

@@ -32,11 +32,15 @@ import javax.swing.JScrollPane;
  */
 public class Evidencias extends JFrame {
 
+    public final int ITEMS_PER_PAGE = 5;
+
     private JLabel configuracion, alertas, archivo, menu;
 
     private JButton crearEvidencia;
     private JPanel panelMenu, contPanel, boxPanel, centralPanel;
     private JScrollPane scroll;
+
+    private Vector<ManejadorEvidencia> evidencias = new Vector<>(ITEMS_PER_PAGE);
 
     private final EscuchaMouse listenerMouse = new EscuchaMouse();
     private boolean menuRetraido = false;
@@ -48,15 +52,15 @@ public class Evidencias extends JFrame {
         addComponent();
     }
 
-    private void addComponent() {
+    public void addEvidencia(String referencia, String fecha, String descripcion, String estado) {
+        ManejadorEvidencia newItem = new ManejadorEvidencia(referencia, fecha, descripcion, estado);
 
-        System.out.println("Agregando...");
+        evidencias.add(0, newItem);
+        refreshEvidencia();
+    }
 
-        Vector<ManejadorEvidencia> evidencias = new Vector<ManejadorEvidencia>();
-
-        for (int i = 0; i < 10; i++) {
-            evidencias.add(new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO"));
-        }
+    private void refreshEvidencia() {
+        boxPanel.removeAll();
 
         for (ManejadorEvidencia ev1 : evidencias) {
             boxPanel.add(ev1);
@@ -64,6 +68,14 @@ public class Evidencias extends JFrame {
 
         repaint();
         revalidate();
+    }
+
+    private void addComponent() {
+        for (int i = 0; i < ITEMS_PER_PAGE; i++) {
+            evidencias.add(new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO"));
+        }
+
+        refreshEvidencia();
     }
 
     private void initComponents() {
@@ -194,14 +206,13 @@ public class Evidencias extends JFrame {
                     UIManager.setLookAndFeel(info.getClassName());
 
                     EventQueue.invokeLater(new Runnable() {
+                        @Override
                         public void run() {
                             new Evidencias().setVisible(true);
                         }
                     });
 
-                } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
+                } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException e) {
                     e.printStackTrace();
                 }
                 break;
