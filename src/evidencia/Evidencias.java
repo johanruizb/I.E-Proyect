@@ -1,15 +1,17 @@
 package evidencia;
 
+import db.BaseDatos;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.*;
-import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 
@@ -18,13 +20,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
+import login.Login;
+import registroevidencia.CrearRegistro;
+import reutilizable.EmptySpace;
 
 /**
  *
@@ -36,27 +44,48 @@ public class Evidencias extends JFrame {
 
     private JLabel configuracion, alertas, archivo, menu;
 
-    private JButton crearEvidencia;
+    private JButton crearEvidencia, refrescar;
     private JPanel panelMenu, contPanel, boxPanel, centralPanel;
     private JScrollPane scroll;
 
-    private Vector<ManejadorEvidencia> evidencias = new Vector<>(ITEMS_PER_PAGE);
+    private ArrayList<ManejadorEvidencia> evidencias = new ArrayList<>(ITEMS_PER_PAGE);
+    private ArrayList<String> userInfo = new ArrayList<>(2);
 
     private final EscuchaMouse listenerMouse = new EscuchaMouse();
+    private final EscuchaAction listenerAction = new EscuchaAction();
     private boolean menuRetraido = false;
 
-    private Evidencias reference = this;
+    private final Evidencias reference = this;
+    private Login viewLogin;
+    private BaseDatos bd = new BaseDatos();
 
-    public Evidencias() {
+    public Evidencias(Login viewL) {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(869, 500));
+        this.viewLogin = viewL;
+        setVisible(false);
         initComponents();
+        setLocationRelativeTo(this.viewLogin);
+        setVisible(true);
+    }
+
+    public void setUserInfo(String email, String password) {
+        userInfo.add(0, email);
+        userInfo.add(1, password);
         addComponent();
     }
 
-    public void addEvidencia(String referencia, String fecha, String descripcion, String estado) {
-        ManejadorEvidencia newItem = new ManejadorEvidencia(referencia, fecha, descripcion, estado);
+    public void sendEvidencia(String[] datosEvidencia) {
+        if (bd.conectarBD()) {
+            if (bd.putEvidences(datosEvidencia, userInfo.get(0))) {
 
-        evidencias.add(0, newItem);
-        refreshEvidencia();
+                ManejadorEvidencia newItem = new ManejadorEvidencia(datosEvidencia, "EN-ESPERA");
+                evidencias.add(0, newItem);
+                refreshEvidencia();
+            } else {
+                JOptionPane.showMessageDialog(reference, "Ha ocurrido un error\n FATAL");
+            }
+        }
     }
 
     private void refreshEvidencia() {
@@ -71,11 +100,31 @@ public class Evidencias extends JFrame {
     }
 
     private void addComponent() {
-        for (int i = 0; i < ITEMS_PER_PAGE; i++) {
-            evidencias.add(new ManejadorEvidencia("19082236 ", " 17/02/2022 ", "Aprobada", "APROBADO"));
-        }
 
-        refreshEvidencia();
+        if (bd.conectarBD()) {
+
+            ArrayList<ArrayList<String>> registrosBD = bd.getEvidences(userInfo.get(0));
+
+            System.out.println("registrosBD.size() " + registrosBD.size());
+
+            if (!registrosBD.isEmpty()) {
+                for (ArrayList<String> vs : registrosBD) {
+                    ManejadorEvidencia temporal = new ManejadorEvidencia(vs);
+                    evidencias.add(temporal);
+                }
+
+                refreshEvidencia();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Evidencias(null);
+            }
+        });
     }
 
     private void initComponents() {
@@ -93,6 +142,7 @@ public class Evidencias extends JFrame {
         boxPanel = new JPanel();
         centralPanel = new JPanel();
         crearEvidencia = new JButton();
+        refrescar = new JButton();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(new Point(0, 0));
@@ -178,12 +228,22 @@ public class Evidencias extends JFrame {
         crearEvidencia.setForeground(new Color(255, 255, 255));
         crearEvidencia.setIcon(new ImageIcon(getClass().getResource("/img/gui/añadir.png")));
         crearEvidencia.setText("Crear evidencia ");
-        crearEvidencia.setHorizontalAlignment(SwingConstants.LEFT);
-        crearEvidencia.setHorizontalTextPosition(SwingConstants.RIGHT);
+        crearEvidencia.setPreferredSize(new Dimension(190, 45));
         crearEvidencia.addMouseListener(listenerMouse);
+        crearEvidencia.addActionListener(listenerAction);
+
+        refrescar.setBackground(new Color(33, 150, 243));
+        refrescar.setForeground(new Color(255, 255, 255));
+        refrescar.setIcon(new ImageIcon(getClass().getResource("/img/gui/añadir.png")));
+        refrescar.setText("Refrescar ");
+        refrescar.setPreferredSize(new Dimension(190, 45));
+        refrescar.addMouseListener(listenerMouse);
+        refrescar.addActionListener(listenerAction);
 
         JPanel temporal = new JPanel();
+        temporal.setPreferredSize(new Dimension(200, 120));
         temporal.add(crearEvidencia);
+        temporal.add(refrescar);
 
         centralPanel.add(boxPanel);
 
@@ -196,36 +256,26 @@ public class Evidencias extends JFrame {
         pack();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                try {
-                    UIManager.setLookAndFeel(info.getClassName());
-
-                    EventQueue.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new Evidencias().setVisible(true);
-                        }
-                    });
-
-                } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException e) {
-                    e.printStackTrace();
-                }
-                break;
-            }
-        }
-    }
-
     private JLabel createSeparator() {
 
         JLabel temp = new JLabel();
         temp.setBorder(BorderFactory.createEmptyBorder(15, 50, 0, 50));
 
         return temp;
+    }
+
+    private class EscuchaAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (ae.getSource().equals(crearEvidencia)) {
+                reference.setVisible(false);
+                new CrearRegistro(reference);
+            } else if (ae.getSource().equals(refrescar)) {
+                evidencias.clear();
+                reference.addComponent();
+            }
+        }
     }
 
     private class EscuchaMouse extends MouseAdapter {
@@ -258,21 +308,19 @@ public class Evidencias extends JFrame {
 
                 panelMenu.repaint();
                 panelMenu.revalidate();
-            } else if (e.getSource().equals(crearEvidencia)) {
-                reference.setVisible(false);
             }
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            JLabel comp = (JLabel) e.getSource();
+            JComponent comp = (JComponent) e.getSource();
             comp.setCursor(new Cursor(Cursor.HAND_CURSOR));
             comp.setOpaque(true);
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            JLabel comp = (JLabel) e.getSource();
+            JComponent comp = (JComponent) e.getSource();
             comp.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         }
     }

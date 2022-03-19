@@ -1,6 +1,7 @@
 package login;
 
 import db.BaseDatos;
+import evidencia.Evidencias;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -53,12 +54,14 @@ public class Login extends JFrame {
     private final EscuchaMouse mouseEscucha = new EscuchaMouse();
     private final EscuchaAction actionEscucha = new EscuchaAction();
 
+    private BaseDatos bd = new BaseDatos();
+
     /**
      * Creates new form Login
      */
     public Login() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(501, 288));
+        setMinimumSize(new java.awt.Dimension(869, 500));
 
         initComponents();
         setLocationRelativeTo(null);
@@ -81,11 +84,8 @@ public class Login extends JFrame {
         registro = new JLabel();
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
-        bg.setPreferredSize(new java.awt.Dimension(869, 500));
 
         bg.setLayout(new BoxLayout(bg, BoxLayout.LINE_AXIS));
-
-        bg.setSize(new Dimension(501, 288));
 
         panel.setPreferredSize(new java.awt.Dimension(235, 375));
         panel.setLayout(new java.awt.GridBagLayout());
@@ -190,8 +190,7 @@ public class Login extends JFrame {
      *
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-
+    public static void main(String[] args) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {
@@ -223,13 +222,14 @@ public class Login extends JFrame {
                 String email = correo.getText();
                 String password = String.valueOf(contraseña.getPassword());
 
-                boolean isEmpty = ("Correo o usuario".equals(correo.getText()) || "".equals(correo.getText()))
-                        || (!"Contraseña".equals(password) || !"".equals(password));
+                boolean isEmpty = ("Correo o usuario".equals(email) || "".equals(email))
+                        || ("Contraseña".equals(password) || "".equals(password));
 
                 if (!isEmpty) {
-                    BaseDatos.conectarBD();
-                    if (BaseDatos.iniciarSesion(email, password)) {
+                    if (bd.conectarBD() && bd.iniciarSesion(email, password)) {
                         reference.dispose();
+                        Evidencias evidencias = new Evidencias(reference);
+                        evidencias.setUserInfo(email, password);
                     } else {
                         JOptionPane.showMessageDialog(reference, "Contraseña erronea o usuario inexistente");
                     }
