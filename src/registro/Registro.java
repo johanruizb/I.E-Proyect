@@ -31,6 +31,8 @@ import login.Login;
 import login.Usuario;
 
 import db.BaseDatos;
+import db.SHA2;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -71,32 +73,14 @@ public class Registro extends JFrame {
     private final EscuchaFoco focusEscucha = new EscuchaFoco();
     private final EscuchaAction actionEscucha = new EscuchaAction();
 
-    /*
-    public static void main(String[] args) {
-        // Crear y mostrar el registro 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Registro();
-            }
-        });
-    }*/
-    /**
-     * Creates new form Login
-     */
-    protected Registro() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(501, 288));
-        initComponents();
-        // setLocationRelativeTo(viewLogin);
-        setVisible(true);
-    }
+    private BaseDatos bd = new BaseDatos();
 
     public Registro(Login viewL) {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(869, 500));
+
         viewLogin = viewL;
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(501, 288));
         initComponents();
         setLocationRelativeTo(viewLogin);
         setVisible(true);
@@ -438,7 +422,6 @@ public class Registro extends JFrame {
         Matcher matcher = pattern.matcher(emailEntrante);
 
         if (matcher.matches()) {
-            // JOptionPane.showMessageDialog(this, "Email correcto");
             email.setBorder(bordeAzul);
             return true;
         } else {
@@ -462,21 +445,30 @@ public class Registro extends JFrame {
         public void actionPerformed(ActionEvent ae) {
             if (ae.getSource().equals(creaRegistro)) {
                 if (comprobarDatos()) {
-                    BaseDatos.conectarBD();
+                    bd.conectarBD();
                     Usuario user = new Usuario();
                     user.setInformacionPersonal(cedula.getText(), nombre.getText(), apellidos.getText());
-                    user.setInformacionAcceso(email.getText(), String.valueOf(contraseña.getPassword()));
+                    user.setInformacionAcceso(email.getText(), SHA2.getSHA512(String.valueOf(contraseña.getPassword())));
                     user.setInformacionLocacion(ciudad.getText(), nombreEmpresa.getText(), departamento.getText());
-                    BaseDatos.añadirUsuario(user);
 
-                    reference.dispose();
+                    boolean ok = bd.añadirUsuario(user);
 
-                    EventQueue.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            new Login().setLocationRelativeTo(reference);
-                        }
-                    });
+                    if (ok) {
+                        JOptionPane.showMessageDialog(reference,
+                                "Registro hecho correctamente");
+
+                        reference.dispose();
+                        EventQueue.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewLogin.setLocationRelativeTo(reference);
+                                viewLogin.setVisible(true);
+                            }
+                        });
+                    } else {
+                        JOptionPane.showMessageDialog(reference,
+                                "Ha ocurrido un error inesperado\nPor favor, intentalo de nuevo");
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(reference,
